@@ -10,17 +10,25 @@ import { CommonModule } from '@angular/common';
 })
 export class App {
   protected readonly title = signal('my-portfolio-angular');
-  projects = [
+projects = [
     {
       title: 'Torslate',
       company: 'Mini Project',
       year: '2025',
       color: 'bg-purple-50 text-purple-600',
       hover: 'hover:text-purple-600',
-      description: 'Developed a real-time screen translator using AI-driven OCR for instant text detection.',
+      description: 'โปรแกรมแปลภาษาบนหน้าจอแบบเรียลไทม์ด้วย AI (OCR)',
       tags: ['Google Cloud Vision', 'Translation API', 'Python', 'Google Cloud CLI'],
-      details: 'Implemented a custom hotkey system and a resizable floating overlay for a seamless UI/UX. Managed Cloud project configurations and secure authentication via Google Cloud CLI.',
-      image: 'https://images.unsplash.com/photo-1543165365-072e2ed0d45a?auto=format&fit=crop&q=80&w=800' // รูปตัวอย่าง
+      details: 'พัฒนาเครื่องมือช่วยแปลภาษาจากภาพหน้าจอโดยใช้ Google Cloud APIs เพื่อการสแกนข้อความ (OCR) และแปลภาษาที่แม่นยำสูง ออกแบบระบบให้ใช้งานง่ายด้วยปุ่มคีย์ลัด (Hotkey) และหน้าต่างแสดงผลแบบลอย (Overlay) ที่สามารถปรับขนาดและเคลื่อนย้ายได้อิสระ จัดการระบบความปลอดภัยและการยืนยันตัวตนผ่าน Google Cloud CLI เพื่อให้มั่นใจในมาตรฐานความปลอดภัยของข้อมูล',
+      images: [
+        'assets/images/Torslate-1.png',
+        'assets/images/Torslate-2.png',
+        'assets/images/Torslate-3.png',
+        'assets/images/Torslate-4.png',
+        'assets/images/Torslate-5.png',
+        'assets/images/Torslate-6.png',
+        'assets/images/Torslate-7.png',
+      ],
     },
     {
       title: 'Cultura',
@@ -28,21 +36,29 @@ export class App {
       year: '2025 - Present',
       color: 'bg-blue-50 text-blue-600',
       hover: 'hover:text-blue-600',
-      description: 'Community Enterprise Tourism Management System.',
+      description: 'ระบบบริหารจัดการวิสาหกิจชุมชนท่องเที่ยวแบบครบวงจร',
       tags: ['React', 'Node.js', 'TypeScript', 'Prisma', 'Docker'],
-      details: 'Built a scalable backend with Express.js and TypeScript, utilizing strict type-safety. Integrated Prisma to streamline database interactions and employed Docker for environment parity.',
-      image: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&q=80&w=800'
+      details: 'พัฒนาระบบ Full-Stack สำหรับจัดการการท่องเที่ยวชุมชนร่วมกับ NECTEC โดยใช้ React และ Tailwind CSS ในการสร้าง UI ที่รองรับการใช้งานทุกอุปกรณ์ (Responsive) ส่วนหลังบ้านเลือกใช้ Express.js ร่วมกับ TypeScript เพื่อให้ระบบมีความเสถียรและลดข้อผิดพลาดด้านชนิดข้อมูล (Type-safety) จัดการฐานข้อมูลผ่าน Prisma ORM เพื่อความรวดเร็วและปลอดภัย และใช้ Docker เพื่อจำลองสภาพแวดล้อมให้ระบบทำงานได้อย่างเสถียรในทุกขั้นตอน',
+      images: [
+        'assets/images/Cultura-1.png',
+        'assets/images/Cultura-2.png',
+        'assets/images/Cultura-3.png',
+        'assets/images/Cultura-4.png',
+        'assets/images/Cultura-5.png'
+      ],
     },
     {
-      title: 'Business Location Analysis',
+      title: 'My Location',
       company: 'MyOrder',
       year: '2025',
       color: 'bg-orange-50 text-orange-600',
       hover: 'hover:text-orange-600',
-      description: 'Strategic branch expansion tool using spatial data.',
-      tags: ['Laravel', 'MySQL', 'Google Maps API'],
-      details: 'Integrated Google Sign-In and Google Maps API to visualize spatial data and provide location-based insights. Implemented advanced data visualization by integrating GPS coordinates and sales data.',
-      image: 'https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?auto=format&fit=crop&q=80&w=800'
+      description: 'เครื่องมือวิเคราะห์ทำเลเชิงกลยุทธ์เพื่อการขยายสาขาธุรกิจ',
+      tags: ['Laravel', 'MySQL', 'Google Maps API', 'Tailwind CSS'],
+      details: 'พัฒนาเว็บแอปพลิเคชันแบบ Full-Stack โดยใช้ PHP (Laravel) และ MySQL เพื่อช่วยในการตัดสินใจเชิงกลยุทธ์ขยายสาขา รวบรวมข้อมูลพิกัด GPS และยอดขายมาแสดงผลบนแผนที่โต้ตอบ (Interactive Maps) ผ่าน Google Maps API พร้อมระบบจัดการสิทธิ์ผู้ใช้งานที่รองรับหลายบทบาท (Sales, Supervisor, CEO) เพื่อให้สอดคล้องกับการดำเนินธุรกิจจริง ช่วยให้ผู้บริหารวิเคราะห์ศักยภาพของทำเลได้อย่างแม่นยำ',
+      images: [
+        'assets/images/My-Location-1.png',
+      ],
     }
   ];
 
