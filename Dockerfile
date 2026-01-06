@@ -12,6 +12,4 @@ FROM nginx:alpine
 COPY --from=build-step /app/dist/my-portfolio-angular/browser /usr/share/nginx/html
 # Copy ไฟล์ config ของ Nginx ที่สร้างไว้
 COPY nginx.conf /etc/nginx/conf.d/default.conf
-
 EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
