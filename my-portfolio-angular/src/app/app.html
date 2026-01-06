@@ -21,7 +21,10 @@
         </div>
         <h1 class="text-4xl md:text-7xl font-bold mb-6 tracking-tight text-[#1e2d3d]">I'm Torlap Ritchai</h1>
         <p class="text-[#50728c] text-base md:text-xl mb-8 leading-relaxed max-w-xl mx-auto md:mx-0">
-          สวัสดี ผมเจ๋ง ผมเป็นนักพัฒนาที่เชื่อในการเรียนรู้ผ่านการลงมือทำ ผมสนุกกับการเปลี่ยนไอเดียให้กลายเป็นโค้ดที่ใช้งานได้จริง  ผมชอบความท้าทายใหม่ๆ ที่เข้ามาให้แก้ปัญหาอยู่เสมอ และพร้อมที่จะเปิดรับเทคโนโลยีหรือมุมมองใหม่ๆ เพื่อนำมาพัฒนาตัวเองและส่งต่อผลงานที่มีคุณค่าให้กับทีมและผู้ใช้งาน หรือตนเอง
+          สวัสดี ผมเจ๋ง ผมเป็นนักพัฒนาที่เชื่อในการเรียนรู้ผ่านการลงมือทำ
+          ผมสนุกกับการเปลี่ยนไอเดียให้กลายเป็นโค้ดที่ใช้งานได้จริง ผมชอบความท้าทายใหม่ๆ ที่เข้ามาให้แก้ปัญหาอยู่เสมอ
+          และพร้อมที่จะเปิดรับเทคโนโลยีหรือมุมมองใหม่ๆ
+          เพื่อนำมาพัฒนาตัวเองและส่งต่อผลงานที่มีคุณค่าให้กับทีมและผู้ใช้งาน หรือตนเอง
         </p>
         <div class="flex justify-center md:justify-start gap-4">
           <a href="/assets/cv-torlap.pdf" download="Torlap_Ritchai_CV.pdf"
@@ -48,7 +51,9 @@
         <div class="w-40 h-40 md:w-72 md:h-72 rounded-full bg-[#9bb4c4]/20 p-3 md:p-4">
           <div
             class="w-full h-full rounded-full bg-gradient-to-tr from-[#50728c] to-[#9bb4c4] overflow-hidden border-[6px] border-white shadow-2xl flex items-center justify-center">
-            <span class="text-white font-bold italic opacity-50">Profile Pic</span>
+
+            <img src="/assets/images/getstudentimage.jpg" alt="Torlap Ritchai"
+              class="w-full h-full object-cover rounded-full">
           </div>
         </div>
       </div>
@@ -57,7 +62,6 @@
     <section id="projects" class="mb-20 px-4 md:px-0">
       <div class="flex items-end justify-between mb-8">
         <h2 class="text-2xl md:text-3xl font-bold tracking-tight text-[#1e2d3d]">My Projects</h2>
-        <span class="text-[#9bb4c4] font-bold text-[10px] uppercase tracking-[0.2em]">2023 - 2025</span>
       </div>
       <div class="flex overflow-x-auto md:grid md:grid-cols-3 gap-6 pb-6 snap-x snap-mandatory custom-scrollbar-hidden">
         <div *ngFor="let project of projects" (click)="openProject(project)"
@@ -123,6 +127,96 @@
           </div>
         </div>
         <div class="shrink-0 w-1 md:w-5"></div>
+      </div>
+    </section>
+    <section id="hobbies" class="mb-20 px-2">
+      <div class="flex items-end justify-between mb-8">
+        <h2 class="text-2xl md:text-3xl font-bold tracking-tight text-[#1e2d3d]">Hobbies & Interests</h2>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+        <div
+          class="bg-white p-6 rounded-[2rem] border border-[#9bb4c4]/10 shadow-sm flex flex-col items-center text-center hover:shadow-md transition-all group">
+          <div
+            class="w-12 h-12 bg-[#e9e1d1]/50 rounded-2xl flex items-center justify-center mb-4 text-[#50728c] group-hover:scale-110 transition-transform">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 12h.01" />
+              <path d="M10 16c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8" />
+              <path d="M22 12c0 5.5-4.5 10-10 10s-10-4.5-10-10" />
+              <path d="m9 10 2 2 4-4" />
+            </svg>
+          </div>
+          <h3 class="text-sm font-bold text-[#1e2d3d] mb-1">Fitness</h3>
+          <p class="text-[10px] text-[#50728c]">วิ่ง กระโดดเชือก ออกกำลังกาย</p>
+        </div>
+
+        <div
+          class="bg-white p-6 rounded-[2rem] border border-[#9bb4c4]/10 shadow-sm flex flex-col items-center text-center hover:shadow-md transition-all group">
+          <div
+            class="w-12 h-12 bg-[#e9e1d1]/50 rounded-2xl flex items-center justify-center mb-4 text-[#50728c] group-hover:scale-110 transition-transform">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="4" y="4" width="16" height="16" rx="2" />
+              <rect x="9" y="9" width="6" height="6" />
+              <path d="M15 2v2" />
+              <path d="M15 20v2" />
+              <path d="M2 15h2" />
+              <path d="M2 9h2" />
+              <path d="M20 15h2" />
+              <path d="M20 9h2" />
+              <path d="M9 2v2" />
+              <path d="M9 20v2" />
+            </svg>
+          </div>
+          <h3 class="text-sm font-bold text-[#1e2d3d] mb-1">PC Hardware</h3>
+          <p class="text-[10px] text-[#50728c]">ประกอบคอม</p>
+        </div>
+
+        <div
+          class="bg-white p-6 rounded-[2rem] border border-[#9bb4c4]/10 shadow-sm flex flex-col items-center text-center hover:shadow-md transition-all group">
+          <div
+            class="w-12 h-12 bg-[#e9e1d1]/50 rounded-2xl flex items-center justify-center mb-4 text-[#50728c] group-hover:scale-110 transition-transform">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="m12 3 1.912 5.886h6.188l-5.007 3.638 1.912 5.886-5.005-3.638-5.005 3.638 1.912-5.886-5.007-3.638h6.188z" />
+            </svg>
+          </div>
+          <h3 class="text-sm font-bold text-[#1e2d3d] mb-1">Anime Figures</h3>
+          <p class="text-[10px] text-[#50728c]">สะสม Model Figures</p>
+        </div>
+
+        <div
+          class="bg-white p-6 rounded-[2rem] border border-[#9bb4c4]/10 shadow-sm flex flex-col items-center text-center hover:shadow-md transition-all group">
+          <div
+            class="w-12 h-12 bg-[#e9e1d1]/50 rounded-2xl flex items-center justify-center mb-4 text-[#50728c] group-hover:scale-110 transition-transform">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="20" x2="12" y2="10" />
+              <line x1="18" y1="20" x2="18" y2="4" />
+              <line x1="6" y1="20" x2="6" y2="16" />
+            </svg>
+          </div>
+          <h3 class="text-sm font-bold text-[#1e2d3d] mb-1">Investing</h3>
+          <p class="text-[10px] text-[#50728c]">หุ้น เทคโนโลยี การลงทุน</p>
+        </div>
+
+<div class="bg-white p-6 rounded-[2rem] border border-[#9bb4c4]/10 shadow-sm flex flex-col items-center text-center hover:shadow-md transition-all group">
+  <div class="w-12 h-12 bg-[#e9e1d1]/50 rounded-2xl flex items-center justify-center mb-4 text-[#50728c] group-hover:scale-110 transition-transform">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5V3"/><path d="M7 12V10"/><path d="M17 12V10"/><path d="M9 16c0-1.7 1.3-3 3-3s3 1.3 3 3c0 2-1.7 4-3 4s-3-2-3-4Z"/></svg>
+  </div>
+  <h3 class="text-sm font-bold text-[#1e2d3d] mb-1">สัตว์เลี้ยง</h3>
+  <p class="text-[10px] text-[#50728c]">แมว หมา</p>
+</div>
+
+<div class="bg-white p-6 rounded-[2rem] border border-[#9bb4c4]/10 shadow-sm flex flex-col items-center text-center hover:shadow-md transition-all group">
+  <div class="w-12 h-12 bg-[#e9e1d1]/50 rounded-2xl flex items-center justify-center mb-4 text-[#50728c] group-hover:scale-110 transition-transform">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>
+  </div>
+  <h3 class="text-sm font-bold text-[#1e2d3d] mb-1">อาหาร</h3>
+  <p class="text-[10px] text-[#50728c]">ชอบลิ้มลองเมนูใหม่ๆ</p>
+</div>
       </div>
     </section>
   </main>
@@ -205,9 +299,26 @@
     </div>
   </div>
 
-  <footer class="py-10 border-t border-[#9bb4c4]/10 text-center">
-    <p class="text-[#9bb4c4] text-[10px] font-black uppercase tracking-[0.3em]">Built by Torlap with Angular • 2026</p>
-  </footer>
+<footer class="py-12 border-t border-[#9bb4c4]/10 text-center bg-white/20 backdrop-blur-sm">
+  <div class="max-w-5xl mx-auto px-6 flex flex-col items-center">
+    <div class="flex flex-wrap justify-center gap-8 mb-8">
+      <a href="mailto:torlap.ritchai@gmail.com" class="flex items-center gap-2 text-xs font-bold text-[#50728c] hover:text-[#1e2d3d] transition-colors uppercase tracking-widest">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        torlap.ritchai@gmail.com
+      </a>
+      <a href="https://github.com/TorlapSayHi" target="_blank" class="flex items-center gap-2 text-xs font-bold text-[#50728c] hover:text-[#1e2d3d] transition-colors uppercase tracking-widest">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.28 1.15-.28 2.35 0 3.5-1.15 1.4-1.2 3.5 1 4.5 0 3.5 3 5.5 6 5.5-.32.48-.48 1.05-.5 1.5V22"/></svg>
+        TorlapSayHi
+      </a>
+      <a href="tel:+66929063674" class="flex items-center gap-2 text-xs font-bold text-[#50728c] hover:text-[#1e2d3d] transition-colors uppercase tracking-widest">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +66 92-906-3674
+      </a>
+    </div>
+
+    <p class="text-[#9bb4c4] text-[10px] font-black uppercase tracking-[0.3em]">Build by Torlap with Angular • 2026</p>
+  </div>
+</footer>
 
   <button *ngIf="isShowScrollButton" (click)="scrollToTop()"
     class="fixed bottom-8 right-8 z-[60] w-12 h-12 bg-[#1e2d3d] text-white rounded-2xl shadow-2xl flex items-center justify-center hover:bg-[#50728c] hover:scale-110 active:scale-95 transition-all duration-300 group">

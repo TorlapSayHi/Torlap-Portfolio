@@ -30,12 +30,16 @@ export class App {
       color: 'bg-purple-50 text-purple-600',
       hover: 'hover:text-purple-600',
       description: 'โปรแกรมแปลภาษาบนหน้าจอแบบเรียลไทม์ด้วย AI (OCR)',
-      tags: ['Google Cloud Vision', 'Translation API', 'Python', 'GCP'],
-      details: 'พัฒนาเครื่องมือแปลภาษา AI โดยใช้ Google Cloud APIs และจัดการระบบด้วย Google Cloud CLI',
+      tags: ['Google Cloud Vision', 'Translation API', 'Python'],
+      details: 'เครื่องมือแปลภาษาบนหน้าจอที่ผสานพลัง AI จาก Google Cloud Vision และ Translation API เพื่อแปลข้อความที่คัดลอกไม่ได้แบบเรียลไทม์ มาพร้อมระบบ Floating Window ที่ปรับแต่งได้อิสระและสั่งงานผ่าน Hotkey ช่วยลดกำแพงภาษาในการใช้งานคอมพิวเตอร์ได้อย่างมีประสิทธิภาพ จัดการความปลอดภัยของระบบด้วย Google Cloud CLI',
       images: [
         'assets/images/Torslate-1.png',
         'assets/images/Torslate-2.png',
-        'assets/images/Torslate-3.png'
+        'assets/images/Torslate-3.png',
+        'assets/images/Torslate-4.png',
+        'assets/images/Torslate-5.png',
+        'assets/images/Torslate-6.png',
+        'assets/images/Torslate-7.png',
       ],
       currentImgIndex: 0
     },
@@ -47,10 +51,13 @@ export class App {
       hover: 'hover:text-blue-600',
       description: 'ระบบบริหารจัดการวิสาหกิจชุมชนท่องเที่ยวร่วมกับ NECTEC [cite: 178, 179]',
       tags: ['React', 'Node.js', 'TypeScript', 'Prisma', 'Docker'],
-      details: 'สร้าง Backend ที่มีประสิทธิภาพสูงด้วย Express.js และจัดการฐานข้อมูลด้วย Prisma ORM [cite: 182, 183]',
+      details: 'ระบบบริหารจัดการวิสาหกิจชุมชนท่องเที่ยวที่พัฒนาร่วมกับ NECTEC โดยใช้ React และ Node.js (TypeScript) จุดเด่นคือระบบจัดการสิทธิ์ผู้ใช้งานแบบ 4 ระดับ และโครงสร้างหลังบ้านที่รองรับการทำงานซับซ้อนได้อย่างเสถียร ตัวระบบออกแบบมาเป็น Responsive เพื่อให้ใช้งานได้ทุกอุปกรณ์ และใช้ Docker เพื่อควบคุมสภาพแวดล้อมการทำงานให้เหมือนกันในทุกขั้นตอน',
       images: [
         'assets/images/Cultura-1.png',
-        'assets/images/Cultura-2.png'
+        'assets/images/Cultura-2.png',
+        'assets/images/Cultura-3.png',
+        'assets/images/Cultura-4.png',
+        'assets/images/Cultura-5.png',
       ],
       currentImgIndex: 0
     },
@@ -62,9 +69,17 @@ export class App {
       hover: 'hover:text-orange-600',
       description: 'เครื่องมือวิเคราะห์ทำเลเพื่อขยายสาขาร่วมกับ MyOrder [cite: 186, 187]',
       tags: ['Laravel', 'MySQL', 'Google Maps API'],
-      details: 'ใช้ Google Maps API ในการทำ Data Visualization เพื่อช่วยในการตัดสินใจเชิงธุรกิจ [cite: 190, 191]',
+      details: 'แอปพลิเคชัน Full-Stack สำหรับวิเคราะห์พิกัดเชิงธุรกิจที่ช่วยในการตัดสินใจขยายสาขาของ MyOrder โดยใช้ Google Maps API เพื่อแสดงผลยอดขายและตำแหน่ง GPS ลงบนแผนที่แบบ Interactive ระบบช่วยให้นักวิเคราะห์มองเห็นภาพรวมของพื้นที่ที่มีศักยภาพได้อย่างชัดเจน พัฒนาด้วย Laravel และ MySQL พร้อมระบบ Google Sign-In เพื่อความสะดวกและปลอดภัย',
       images: [
-        'assets/images/My-Location-1.png'
+        'assets/images/My-Location-1.png',
+        'assets/images/My-Location-2.png',
+        'assets/images/My-Location-3.png',
+        'assets/images/My-Location-4.png',
+        'assets/images/My-Location-5.png',
+        'assets/images/My-Location-6.png',
+        'assets/images/My-Location-7.png',
+        'assets/images/My-Location-8.png',
+        'assets/images/My-Location-9.png',
       ],
       currentImgIndex: 0
     }
