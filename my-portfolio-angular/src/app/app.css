@@ -6,8 +6,3 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
-
-.custom-scrollbar {
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior: contain;
-}

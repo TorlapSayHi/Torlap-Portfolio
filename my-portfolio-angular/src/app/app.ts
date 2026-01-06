@@ -25,7 +25,7 @@ export class App {
     {
       title: 'Cultura',
       company: 'NECTEC',
-      year: '2025',
+      year: '2025 - Present',
       color: 'bg-blue-50 text-blue-600',
       hover: 'hover:text-blue-600',
       description: 'Community Enterprise Tourism Management System.',
@@ -106,4 +106,5 @@ export class App {
       behavior: 'smooth'
     });
   }
+
 }
