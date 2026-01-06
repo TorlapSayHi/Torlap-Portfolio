@@ -4,7 +4,7 @@
   <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-[#9bb4c4]/20">
     <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
       <!-- โลโก้ / ชื่อเว็บไซต์ -->
-      <span class="font-black tracking-tighter text-lg text-[#1e2d3d]">TORLAP.R</span>
+      <span class="font-black tracking-tighter text-lg text-[#1e2d3d]">TORLAP CV</span>
       <!-- ลิงก์ติดต่อ -->
       <div class="flex items-center gap-6">
         <a href="mailto:torlap.ritchai@gmail.com"
@@ -87,7 +87,7 @@
           <div
             class="relative aspect-[4/3] rounded-[1.5rem] overflow-hidden mb-4 bg-gray-100 flex items-center justify-center">
             <img [src]="project.images[0]"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500">
             <div class="absolute inset-0 bg-[#1e2d3d]/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
           </div>
           <!-- ข้อมูลโปรเจกต์ -->
@@ -98,6 +98,7 @@
             </div>
             <h3 class="text-lg font-bold mb-3 text-[#1e2d3d] group-hover:text-[#50728c] transition">{{ project.title }}
             </h3>
+            <p class="text-[11px] text-[#50728c] line-clamp-2 mb-4 opacity-80">{{ project.description }}</p>
             <!-- Tag เทคโนโลยี -->
             <div class="flex flex-wrap gap-2">
               <span *ngFor="let tag of project.tags.slice(0,3)"

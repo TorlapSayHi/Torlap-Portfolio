@@ -49,7 +49,7 @@ export class App {
       year: '2025 - Present',
       color: 'bg-blue-50 text-blue-600',
       hover: 'hover:text-blue-600',
-      description: 'ระบบบริหารจัดการวิสาหกิจชุมชนท่องเที่ยวร่วมกับ NECTEC [cite: 178, 179]',
+      description: 'ระบบบริหารจัดการวิสาหกิจชุมชนท่องเที่ยวร่วมกับ NECTEC',
       tags: ['React', 'Node.js', 'TypeScript', 'Prisma', 'Docker'],
       details: 'ระบบบริหารจัดการวิสาหกิจชุมชนท่องเที่ยวที่พัฒนาร่วมกับ NECTEC โดยใช้ React และ Node.js (TypeScript) จุดเด่นคือระบบจัดการสิทธิ์ผู้ใช้งานแบบ 4 ระดับ และโครงสร้างหลังบ้านที่รองรับการทำงานซับซ้อนได้อย่างเสถียร ตัวระบบออกแบบมาเป็น Responsive เพื่อให้ใช้งานได้ทุกอุปกรณ์ และใช้ Docker เพื่อควบคุมสภาพแวดล้อมการทำงานให้เหมือนกันในทุกขั้นตอน',
       images: [
@@ -64,10 +64,10 @@ export class App {
     {
       title: 'My Location',
       company: 'MyOrder',
-      year: '2025',
+      year: '2024 - 2025',
       color: 'bg-orange-50 text-orange-600',
       hover: 'hover:text-orange-600',
-      description: 'เครื่องมือวิเคราะห์ทำเลเพื่อขยายสาขาร่วมกับ MyOrder [cite: 186, 187]',
+      description: 'เครื่องมือวิเคราะห์ทำเลเพื่อขยายสาขาร่วมกับ MyOrder',
       tags: ['Laravel', 'MySQL', 'Google Maps API'],
       details: 'แอปพลิเคชัน Full-Stack สำหรับวิเคราะห์พิกัดเชิงธุรกิจที่ช่วยในการตัดสินใจขยายสาขาของ MyOrder โดยใช้ Google Maps API เพื่อแสดงผลยอดขายและตำแหน่ง GPS ลงบนแผนที่แบบ Interactive ระบบช่วยให้นักวิเคราะห์มองเห็นภาพรวมของพื้นที่ที่มีศักยภาพได้อย่างชัดเจน พัฒนาด้วย Laravel และ MySQL พร้อมระบบ Google Sign-In เพื่อความสะดวกและปลอดภัย',
       images: [
@@ -92,35 +92,35 @@ export class App {
       issuer: 'Voxy',
       date: 'Jul 2025',
       image: 'assets/images/certificate/cer-voxy.png',
-      description: 'asdasddddasdsdasdas.'
+      description: 'พัฒนาทักษะภาษาอังกฤษเฉพาะทางสำหรับการสื่อสาร'
     },
     {
       title: 'Data Analytics Foundation',
       issuer: 'True digital academy',
       date: 'Jan 2025',
       image: 'assets/images/certificate/cer-data-analytics.png',
-      description: 'การวิเคราะห์ข้อมูล 4 ระดับ: ศึกษาความแตกต่างของ Descriptive, Diagnostic, Predictive และ Prescriptive Analytics การสร้างวัฒนธรรมข้อมูล: เรียนรู้องค์ประกอบ 4 ด้าน (Mindset, Skillset, Toolset, Dataset) เพื่อขับเคลื่อนองค์กรด้วยข้อมูล กรณีศึกษาและเครื่องมือ: ทำความเข้าใจการประยุกต์ใช้ข้อมูลในธุรกิจ (เช่น Banking, Healthcare) และความแตกต่างระหว่าง Spreadsheet กับ BI.'
+      description: 'ปูพื้นฐานการวิเคราะห์ข้อมูล 4 ระดับ และการสร้างวัฒนธรรมข้อมูล (Data Culture) เพื่อขับเคลื่อนองค์กรด้วยข้อมูลอย่างเป็นระบบ'
     },
     {
       title: 'Interpersonal Communication Skills in Workplace',
       issuer: 'Thai MOOC',
       date: 'Jan 2025',
       image: 'assets/images/certificate/cer-mooc-communication-skill.png',
-      description: 'asdasddddasdsdasdas.'
+      description: 'พัฒนาทักษะการสื่อสารระหว่างบุคคลและการทำงานร่วมกันในองค์กร เพื่อสร้างความสัมพันธ์ที่ดีและบรรลุเป้าหมายร่วมกัน.'
     },
     {
       title: 'Effective Presentation Technique',
       issuer: 'Thai MOOC',
       date: 'Jan 2025',
       image: 'assets/images/certificate/cer-mooc-eff-presentation.png',
-      description: 'asdasddddasdsdasdas.'
+      description: 'เรียนรู้เทคนิคการนำเสนออย่างมีประสิทธิภาพ ตั้งแต่การเตรียมเนื้อหา การเลือกสื่อ จนถึงการสื่อสารเพื่อจูงใจผู้ฟัง.'
     },
     {
       title: 'Creating a Basic Web Page with HTML and CSS',
       issuer: 'Thai MOOC',
       date: 'Jan 2025',
       image: 'assets/images/certificate/cer-mooc-html-css.png',
-      description: 'asdasddddasdsdasdas.'
+      description: 'พื้นฐานการพัฒนาเว็บไซต์ด้วยการโครงสร้าง HTML และการตกแต่งความสวยงามด้วย CSS เบื้องต้น.'
     },
 
     {
@@ -128,49 +128,49 @@ export class App {
       issuer: 'Coursera',
       date: 'Dec 2024',
       image: 'assets/images/certificate/cer-build-dynamic.png',
-      description: 'asdasddddasdsdasdas.'
+      description: 'การออกแบบส่วนติดต่อผู้ใช้งานที่ตอบสนองได้ดี (Dynamic UI) เพื่อเพิ่มประสิทธิภาพการใช้งานบนเว็บไซต์.'
     },
     {
       title: 'Build Wireframes and Low-Fidelity Prototypes',
       issuer: 'Coursera',
       date: 'Dec 2024',
       image: 'assets/images/certificate/cer-build-wireframes.png',
-      description: 'asdasddddasdsdasdas.'
+      description: 'การวางโครงร่างเว็บไซต์ (Wireframes) และสร้างต้นแบบเบื้องต้นเพื่อทดสอบลำดับการใช้งาน (User Flow).'
     },
     {
       title: 'Conduct UX Research and Test Early Concepts',
       issuer: 'Coursera',
       date: 'Dec 2024',
       image: 'assets/images/certificate/cer-conduct-ux.png',
-      description: 'asdasddddasdsdasdas.'
+      description: 'กระบวนการวิจัยผู้ใช้งานและการทดสอบการใช้งาน (Usability Testing) เพื่อตรวจสอบและปรับปรุงแนวคิดการออกแบบ.'
     },
     {
       title: 'Create High-Fidelity Designs and Prototypes in Figma',
       issuer: 'Coursera',
       date: 'Dec 2024',
       image: 'assets/images/certificate/cer-create-high-fidelity.png',
-      description: 'asdasddddasdsdasdas.'
+      description: 'การสร้างงานออกแบบที่มีความละเอียดสูงและการทำ Prototype ที่ใช้งานได้จริงผ่านเครื่องมือ Figma.'
     },
     {
       title: 'Design a User Experience for Social Good & Prepare for Jobs',
       issuer: 'Coursera',
       date: 'Dec 2024',
       image: 'assets/images/certificate/cer-design-a-user.png',
-      description: 'asdasddddasdsdasdas.'
+      description: 'การประยุกต์ใช้การออกแบบ UX เพื่อสร้างผลกระทบเชิงบวกทางสังคมและการเตรียมความพร้อมสู่สายงานมืออาชีพ.'
     },
     {
       title: 'Foundations of User Experience (UX) Design',
       issuer: 'Coursera',
       date: 'Dec 2024',
       image: 'assets/images/certificate/cer-foundations-of-user.png',
-      description: 'asdasddddasdsdasdas.'
+      description: 'พื้นฐานสำคัญของการออกแบบ UX ครอบคลุมเรื่องการเข้าถึง (Accessibility) และการออกแบบที่คำนึงถึงความเท่าเทียม.'
     },
     {
       title: 'Start the UX Design Process Empathize Define and Ideate',
       issuer: 'Coursera',
       date: 'Dec 2024',
       image: 'assets/images/certificate/cer-start-the-ux.png',
-      description: 'asdasddddasdsdasdas.'
+      description: 'เริ่มต้นกระบวนการออกแบบด้วยการสร้างความเข้าใจผู้ใช้อย่างลึกซึ้ง (Empathize) การนิยามปัญหา และการระดมความคิดแก้ไข.'
     },
   ];
 
