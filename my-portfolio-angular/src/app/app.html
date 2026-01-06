@@ -50,7 +50,7 @@
 
     <section id="projects" class="mb-20">
       <div class="flex items-end justify-between mb-8">
-        <h2 class="text-2xl md:text-3xl font-bold tracking-tight text-[#1e2d3d]">Selected Projects</h2>
+        <h2 class="text-2xl md:text-3xl font-bold tracking-tight text-[#1e2d3d]">My Projects</h2>
         <span class="text-[#9bb4c4] font-bold text-[10px] uppercase tracking-[0.2em]">2023 - 2025</span>
       </div>
 
@@ -80,46 +80,57 @@
       </div>
     </section>
 
-    <section id="certificates" class="mb-20">
+    <section id="certificates" class="mb-20 relative">
       <div class="flex items-end justify-between mb-8 px-2">
         <div>
           <h2 class="text-2xl md:text-3xl font-bold tracking-tight text-[#1e2d3d]">Certificates</h2>
-          <p class="text-[10px] text-[#9bb4c4] uppercase tracking-widest mt-1">Swipe to see more</p>
+          <p class="text-[10px] text-[#9bb4c4] uppercase tracking-widest mt-1 italic">Swipe or use arrows to explore</p>
         </div>
-        <span class="text-[#9bb4c4] font-bold text-[10px] uppercase tracking-[0.2em]">Achievements</span>
+
+        <div class="hidden md:flex gap-3">
+          <button (click)="scrollCertificates(-1)"
+            class="w-10 h-10 rounded-full border border-[#9bb4c4]/30 flex items-center justify-center hover:bg-[#e9e1d1]/50 transition text-[#1e2d3d]">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m15 18-6-6 6-6" />
+            </svg>
+          </button>
+          <button (click)="scrollCertificates(1)"
+            class="w-10 h-10 rounded-full border border-[#9bb4c4]/30 flex items-center justify-center hover:bg-[#e9e1d1]/50 transition text-[#1e2d3d] ">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m9 18 6-6-6-6" />
+            </svg>
+          </button>
+        </div>
       </div>
 
-      <div class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory custom-scrollbar-hidden"
+      <div id="certContainer"
+        class="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory custom-scrollbar-hidden scroll-smooth"
         style="-webkit-overflow-scrolling: touch;">
 
         <div *ngFor="let cert of certificates"
           class="shrink-0 w-[280px] md:w-[350px] snap-center bg-white rounded-[2rem] border border-[#9bb4c4]/10 shadow-sm overflow-hidden flex flex-col hover:shadow-lg transition-all duration-300">
 
           <div class="relative aspect-[1.4/1] bg-gray-50 overflow-hidden border-b border-[#9bb4c4]/5">
-            <img [src]="cert.image" class="w-full h-full object-cover" [alt]="cert.title">
+            <img [src]="cert.image" class="w-full h-full object-cover">
             <div
-              class="absolute bottom-3 right-3 px-2 py-1 bg-white/90 backdrop-blur-md rounded-lg text-[9px] font-bold text-[#50728c] shadow-sm">
+              class="absolute bottom-3 right-3 px-2 py-1 bg-white/90 backdrop-blur-md rounded-lg text-[9px] font-bold text-[#50728c] shadow-sm italic">
               {{ cert.date }}
             </div>
           </div>
 
-          <div class="p-6 flex-1 flex flex-col">
-            <div class="flex items-center gap-2 mb-3">
-              <span
-                class="px-2.5 py-1 bg-[#e9e1d1]/50 rounded-md text-[10px] font-black text-[#1e2d3d] uppercase tracking-wider">
-                {{ cert.issuer }}
-              </span>
-            </div>
-            <h3 class="text-lg font-bold text-[#1e2d3d] mb-3 leading-snug">
-              {{ cert.title }}
-            </h3>
-            <p class="text-[12px] text-[#50728c] leading-relaxed italic opacity-80">
-              {{ cert.description }}
-            </p>
+          <div class="p-6">
+            <span
+              class="px-2 py-0.5 bg-[#e9e1d1]/50 rounded-md text-[9px] font-black text-[#1e2d3d] uppercase tracking-wider mb-2 inline-block">
+              {{ cert.issuer }}
+            </span>
+            <h3 class="text-base font-bold text-[#1e2d3d] mb-2">{{ cert.title }}</h3>
+            <p class="text-[11px] text-[#50728c] line-clamp-2 opacity-80">{{ cert.description }}</p>
           </div>
         </div>
 
-        <div class="shrink-0 w-4 md:w-10"></div>
+        <div class="shrink-0 w-1 md:w-5"></div>
       </div>
     </section>
   </main>
@@ -132,6 +143,16 @@
     <div
       class="relative bg-white w-full max-w-4xl h-[85vh] md:h-auto md:max-h-[90vh] rounded-t-[2.5rem] md:rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col animate-in slide-in-from-bottom duration-300">
 
+      <div #modalContent (touchstart)="onTouchStart($event)" (touchend)="onTouchEnd($event)"
+        class="relative bg-white w-full max-w-4xl h-[85vh] md:h-auto md:max-h-[90vh] rounded-t-[2.5rem] md:rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col animate-in slide-in-from-bottom duration-300">
+        <div class="md:hidden w-full flex justify-center py-4 border-b border-slate-50 shrink-0 cursor-pointer"
+          (click)="closeProject()">
+          <div class="w-12 h-1.5 bg-slate-200 rounded-full active:bg-slate-400"></div>
+        </div>
+
+        <div #scrollContainer class="overflow-y-auto custom-scrollbar flex-1">
+        </div>
+      </div>
       <div class="md:hidden w-full flex justify-center py-4 border-b border-slate-50 shrink-0" (click)="closeProject()">
         <div class="w-12 h-1.5 bg-slate-200 rounded-full"></div>
       </div>
@@ -187,4 +208,13 @@
   <footer class="py-10 border-t border-[#9bb4c4]/10 text-center">
     <p class="text-[#9bb4c4] text-[10px] font-black uppercase tracking-[0.3em]">Built by Torlap with Angular • 2026</p>
   </footer>
+  <button *ngIf="isShowScrollButton" (click)="scrollToTop()"
+    class="fixed bottom-8 right-8 z-[60] w-12 h-12 bg-[#1e2d3d] text-white rounded-2xl shadow-2xl flex items-center justify-center hover:bg-[#50728c] hover:scale-110 active:scale-95 transition-all duration-300 group"
+    aria-label="Back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+      class="group-hover:-translate-y-1 transition-transform">
+      <path d="m18 15-6-6-6 6" />
+    </svg>
+  </button>
 </div>

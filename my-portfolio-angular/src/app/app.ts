@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, HostListener, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -81,5 +81,29 @@ export class App {
   closeProject() {
     this.selectedProject = null;
     document.body.style.overflow = 'auto';
+  }
+
+  scrollCertificates(direction: number) {
+    const container = document.getElementById('certContainer');
+    if (container) {
+      const scrollAmount = 350;
+      container.scrollBy({
+        left: direction * scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  }
+
+  isShowScrollButton = false;
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    this.isShowScrollButton = window.pageYOffset > 300;
+  }
+
+  scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   }
 }
