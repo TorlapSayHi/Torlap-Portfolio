@@ -2,6 +2,18 @@ import { Component, HostListener, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
+interface Project {
+  title: string;
+  company: string;
+  year: string;
+  color: string;
+  hover: string;
+  description: string;
+  tags: string[];
+  details: string;
+  images: string[];
+  currentImgIndex: number;
+}
 @Component({
   selector: 'app-root',
   imports: [CommonModule],
@@ -10,25 +22,22 @@ import { CommonModule } from '@angular/common';
 })
 export class App {
   protected readonly title = signal('my-portfolio-angular');
-projects = [
+  projects: Project[] = [
     {
       title: 'Torslate',
-      company: 'Mini Project',
+      company: '',
       year: '2025',
       color: 'bg-purple-50 text-purple-600',
       hover: 'hover:text-purple-600',
       description: 'โปรแกรมแปลภาษาบนหน้าจอแบบเรียลไทม์ด้วย AI (OCR)',
-      tags: ['Google Cloud Vision', 'Translation API', 'Python', 'Google Cloud CLI'],
-      details: 'พัฒนาเครื่องมือช่วยแปลภาษาจากภาพหน้าจอโดยใช้ Google Cloud APIs เพื่อการสแกนข้อความ (OCR) และแปลภาษาที่แม่นยำสูง ออกแบบระบบให้ใช้งานง่ายด้วยปุ่มคีย์ลัด (Hotkey) และหน้าต่างแสดงผลแบบลอย (Overlay) ที่สามารถปรับขนาดและเคลื่อนย้ายได้อิสระ จัดการระบบความปลอดภัยและการยืนยันตัวตนผ่าน Google Cloud CLI เพื่อให้มั่นใจในมาตรฐานความปลอดภัยของข้อมูล',
+      tags: ['Google Cloud Vision', 'Translation API', 'Python', 'GCP'],
+      details: 'พัฒนาเครื่องมือแปลภาษา AI โดยใช้ Google Cloud APIs และจัดการระบบด้วย Google Cloud CLI',
       images: [
         'assets/images/Torslate-1.png',
         'assets/images/Torslate-2.png',
-        'assets/images/Torslate-3.png',
-        'assets/images/Torslate-4.png',
-        'assets/images/Torslate-5.png',
-        'assets/images/Torslate-6.png',
-        'assets/images/Torslate-7.png',
+        'assets/images/Torslate-3.png'
       ],
+      currentImgIndex: 0
     },
     {
       title: 'Cultura',
@@ -36,16 +45,14 @@ projects = [
       year: '2025 - Present',
       color: 'bg-blue-50 text-blue-600',
       hover: 'hover:text-blue-600',
-      description: 'ระบบบริหารจัดการวิสาหกิจชุมชนท่องเที่ยวแบบครบวงจร',
+      description: 'ระบบบริหารจัดการวิสาหกิจชุมชนท่องเที่ยวร่วมกับ NECTEC [cite: 178, 179]',
       tags: ['React', 'Node.js', 'TypeScript', 'Prisma', 'Docker'],
-      details: 'พัฒนาระบบ Full-Stack สำหรับจัดการการท่องเที่ยวชุมชนร่วมกับ NECTEC โดยใช้ React และ Tailwind CSS ในการสร้าง UI ที่รองรับการใช้งานทุกอุปกรณ์ (Responsive) ส่วนหลังบ้านเลือกใช้ Express.js ร่วมกับ TypeScript เพื่อให้ระบบมีความเสถียรและลดข้อผิดพลาดด้านชนิดข้อมูล (Type-safety) จัดการฐานข้อมูลผ่าน Prisma ORM เพื่อความรวดเร็วและปลอดภัย และใช้ Docker เพื่อจำลองสภาพแวดล้อมให้ระบบทำงานได้อย่างเสถียรในทุกขั้นตอน',
+      details: 'สร้าง Backend ที่มีประสิทธิภาพสูงด้วย Express.js และจัดการฐานข้อมูลด้วย Prisma ORM [cite: 182, 183]',
       images: [
         'assets/images/Cultura-1.png',
-        'assets/images/Cultura-2.png',
-        'assets/images/Cultura-3.png',
-        'assets/images/Cultura-4.png',
-        'assets/images/Cultura-5.png'
+        'assets/images/Cultura-2.png'
       ],
+      currentImgIndex: 0
     },
     {
       title: 'My Location',
@@ -53,38 +60,103 @@ projects = [
       year: '2025',
       color: 'bg-orange-50 text-orange-600',
       hover: 'hover:text-orange-600',
-      description: 'เครื่องมือวิเคราะห์ทำเลเชิงกลยุทธ์เพื่อการขยายสาขาธุรกิจ',
-      tags: ['Laravel', 'MySQL', 'Google Maps API', 'Tailwind CSS'],
-      details: 'พัฒนาเว็บแอปพลิเคชันแบบ Full-Stack โดยใช้ PHP (Laravel) และ MySQL เพื่อช่วยในการตัดสินใจเชิงกลยุทธ์ขยายสาขา รวบรวมข้อมูลพิกัด GPS และยอดขายมาแสดงผลบนแผนที่โต้ตอบ (Interactive Maps) ผ่าน Google Maps API พร้อมระบบจัดการสิทธิ์ผู้ใช้งานที่รองรับหลายบทบาท (Sales, Supervisor, CEO) เพื่อให้สอดคล้องกับการดำเนินธุรกิจจริง ช่วยให้ผู้บริหารวิเคราะห์ศักยภาพของทำเลได้อย่างแม่นยำ',
+      description: 'เครื่องมือวิเคราะห์ทำเลเพื่อขยายสาขาร่วมกับ MyOrder [cite: 186, 187]',
+      tags: ['Laravel', 'MySQL', 'Google Maps API'],
+      details: 'ใช้ Google Maps API ในการทำ Data Visualization เพื่อช่วยในการตัดสินใจเชิงธุรกิจ [cite: 190, 191]',
       images: [
-        'assets/images/My-Location-1.png',
+        'assets/images/My-Location-1.png'
       ],
+      currentImgIndex: 0
     }
   ];
 
 
   certificates = [
     {
-      title: 'Google Cloud Platform Essentials',
-      issuer: 'Google Cloud',
-      date: 'Dec 2025',
-      image: 'https://images.unsplash.com/photo-1523240715634-d1c651177e4d?auto=format&fit=crop&q=80&w=800', // เปลี่ยนเป็น URL รูปจริงของคุณ
-      description: 'Fundamental knowledge of GCP services and architecture.'
+      title: 'Data Analytics Foundation',
+      issuer: 'Voxy',
+      date: 'Jul 2025',
+      image: 'assets/images/certificate/cer-voxy.png',
+      description: 'asdasddddasdsdasdas.'
     },
     {
-      title: 'Modern Web Development with React',
+      title: 'Data Analytics Foundation',
+      issuer: 'True digital academy',
+      date: 'Jan 2025',
+      image: 'assets/images/certificate/cer-data-analytics.png',
+      description: 'การวิเคราะห์ข้อมูล 4 ระดับ: ศึกษาความแตกต่างของ Descriptive, Diagnostic, Predictive และ Prescriptive Analytics การสร้างวัฒนธรรมข้อมูล: เรียนรู้องค์ประกอบ 4 ด้าน (Mindset, Skillset, Toolset, Dataset) เพื่อขับเคลื่อนองค์กรด้วยข้อมูล กรณีศึกษาและเครื่องมือ: ทำความเข้าใจการประยุกต์ใช้ข้อมูลในธุรกิจ (เช่น Banking, Healthcare) และความแตกต่างระหว่าง Spreadsheet กับ BI.'
+    },
+    {
+      title: 'Interpersonal Communication Skills in Workplace',
+      issuer: 'Thai MOOC',
+      date: 'Jan 2025',
+      image: 'assets/images/certificate/cer-mooc-communication-skill.png',
+      description: 'asdasddddasdsdasdas.'
+    },
+    {
+      title: 'Effective Presentation Technique',
+      issuer: 'Thai MOOC',
+      date: 'Jan 2025',
+      image: 'assets/images/certificate/cer-mooc-eff-presentation.png',
+      description: 'asdasddddasdsdasdas.'
+    },
+    {
+      title: 'Creating a Basic Web Page with HTML and CSS',
+      issuer: 'Thai MOOC',
+      date: 'Jan 2025',
+      image: 'assets/images/certificate/cer-mooc-html-css.png',
+      description: 'asdasddddasdsdasdas.'
+    },
+
+    {
+      title: 'Build Dynamic User Interfaces (UI) for Websites',
       issuer: 'Coursera',
-      date: 'Oct 2025',
-      image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=800',
-      description: 'Advanced React patterns and state management.'
+      date: 'Dec 2024',
+      image: 'assets/images/certificate/cer-build-dynamic.png',
+      description: 'asdasddddasdsdasdas.'
     },
     {
-      title: 'Full-Stack Development Boot Camp',
-      issuer: 'Tech Academy',
-      date: 'Aug 2025',
-      image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800',
-      description: 'Intensive training on Node.js, Express, and databases.'
-    }
+      title: 'Build Wireframes and Low-Fidelity Prototypes',
+      issuer: 'Coursera',
+      date: 'Dec 2024',
+      image: 'assets/images/certificate/cer-build-wireframes.png',
+      description: 'asdasddddasdsdasdas.'
+    },
+    {
+      title: 'Conduct UX Research and Test Early Concepts',
+      issuer: 'Coursera',
+      date: 'Dec 2024',
+      image: 'assets/images/certificate/cer-conduct-ux.png',
+      description: 'asdasddddasdsdasdas.'
+    },
+    {
+      title: 'Create High-Fidelity Designs and Prototypes in Figma',
+      issuer: 'Coursera',
+      date: 'Dec 2024',
+      image: 'assets/images/certificate/cer-create-high-fidelity.png',
+      description: 'asdasddddasdsdasdas.'
+    },
+    {
+      title: 'Design a User Experience for Social Good & Prepare for Jobs',
+      issuer: 'Coursera',
+      date: 'Dec 2024',
+      image: 'assets/images/certificate/cer-design-a-user.png',
+      description: 'asdasddddasdsdasdas.'
+    },
+    {
+      title: 'Foundations of User Experience (UX) Design',
+      issuer: 'Coursera',
+      date: 'Dec 2024',
+      image: 'assets/images/certificate/cer-foundations-of-user.png',
+      description: 'asdasddddasdsdasdas.'
+    },
+    {
+      title: 'Start the UX Design Process Empathize Define and Ideate',
+      issuer: 'Coursera',
+      date: 'Dec 2024',
+      image: 'assets/images/certificate/cer-start-the-ux.png',
+      description: 'asdasddddasdsdasdas.'
+    },
   ];
 
   selectedProject: any = null;
@@ -92,11 +164,6 @@ projects = [
   openProject(project: any) {
     this.selectedProject = project;
     document.body.style.overflow = 'hidden';
-  }
-
-  closeProject() {
-    this.selectedProject = null;
-    document.body.style.overflow = 'auto';
   }
 
   scrollCertificates(direction: number) {
@@ -123,4 +190,31 @@ projects = [
     });
   }
 
+  nextModalImage() {
+    if (this.selectedProject) {
+      if (this.selectedProject.currentImgIndex < this.selectedProject.images.length - 1) {
+        this.selectedProject.currentImgIndex++;
+      } else {
+        this.selectedProject.currentImgIndex = 0;
+      }
+    }
+  }
+
+  prevModalImage() {
+    if (this.selectedProject) {
+      if (this.selectedProject.currentImgIndex > 0) {
+        this.selectedProject.currentImgIndex--;
+      } else {
+        this.selectedProject.currentImgIndex = this.selectedProject.images.length - 1;
+      }
+    }
+  }
+
+  closeProject() {
+    if (this.selectedProject) {
+      this.selectedProject.currentImgIndex = 0;
+    }
+    this.selectedProject = null;
+    document.body.style.overflow = 'auto';
+  }
 }
