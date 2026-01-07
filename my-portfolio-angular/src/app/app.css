@@ -135,3 +135,44 @@ html {
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: #9bb4c4;
 }
+
+/* Animation รูปใหม่: ค่อยๆ จางเข้าและขยายขึ้นเล็กน้อย */
+@keyframes heroFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Animation รูปเก่า: ลอยออกไปทางซ้ายบนพร้อมจางหาย */
+@keyframes flyOutTopLeft {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-120px, -120px) scale(0.8) rotate(-5deg);
+  }
+}
+
+.hero-img-active {
+  z-index: 10;
+  animation: heroFadeIn 0.8s ease-out forwards;
+}
+
+.hero-img-leaving {
+  z-index: 5;
+  animation: flyOutTopLeft 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.hero-img-hidden {
+  opacity: 0;
+  z-index: 0;
+}

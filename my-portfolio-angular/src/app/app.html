@@ -17,27 +17,27 @@
 
   <main class="max-w-6xl mx-auto px-6 py-12 md:py-20">
     <section class="flex flex-col md:flex-row items-center gap-12 mb-32 animate-slide-up">
+
       <div class="flex-1 text-center md:text-left order-2 md:order-1">
-        <!-- สถานะ Available for Internship -->
         <div
           class="inline-flex items-center gap-2 px-4 py-1.5 bg-white border border-[#9bb4c4]/20 rounded-full mb-8 shadow-sm group cursor-default">
           <span class="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse"></span>
           <span
-            class="text-[11px] font-bold text-[#50728c] uppercase tracking-wider group-hover:tracking-[0.15em] transition-all">Available
-            for Internship</span>
+            class="text-[11px] font-bold text-[#50728c] uppercase tracking-wider group-hover:tracking-[0.15em] transition-all">
+            Available for Internship
+          </span>
         </div>
-        <!-- ชื่อ -->
+
         <h1 class="text-5xl md:text-8xl font-bold mb-8 tracking-tight text-[#1e2d3d] leading-[0.9]">
           I'm <span class="text-[#50728c]">Torlap</span> Ritchai
         </h1>
-        <!-- คำอธิบายตัวเอง -->
+
         <p
           class="text-[#50728c] text-lg md:text-2xl mb-10 leading-relaxed max-w-2xl mx-auto md:mx-0 font-medium opacity-90">
           สวัสดี ผมเจ๋ง ผมเป็นนักพัฒนาที่เชื่อในการเรียนรู้ผ่านการลงมือทำ
           สนุกกับการเปลี่ยนไอเดียให้กลายเป็นโค้ดที่ใช้งานได้จริง และพร้อมเปิดรับเทคโนโลยีใหม่ๆ เสมอ
         </p>
 
-        <!-- ปุ่ม Download CV -->
         <div class="flex flex-col sm:flex-row justify-center md:justify-start gap-5">
           <a href="/assets/cv-torlap.pdf" download="Torlap_Ritchai_CV.pdf"
             class="group px-10 py-4 bg-[#1e2d3d] text-white rounded-2xl font-bold hover:bg-[#50728c] hover:scale-105 transition-all flex items-center justify-center gap-3 shadow-2xl shadow-[#1e2d3d]/20">
@@ -52,18 +52,54 @@
           </a>
         </div>
       </div>
+
       <div class="order-1 md:order-2 animate-float">
-        <div class="relative w-56 h-56 md:w-80 md:h-80">
-          <!-- กล่องเงาเบลอด้านหลัง -->
+        <div class="relative w-64 h-64 md:w-96 md:h-96 group" (touchstart)="onHeroTouchStart($event)"
+          (touchend)="onHeroTouchEnd($event)">
+
           <div
-            class="absolute inset-0 bg-gradient-to-tr from-[#50728c] to-[#9bb4c4] rounded-[3rem] rotate-6 opacity-20">
+            class="absolute inset-0 bg-gradient-to-tr from-[#50728c] to-[#9bb4c4] rounded-[3.5rem] rotate-6 opacity-20">
           </div>
-          <!-- รูปภาพจริง -->
-          <div class="absolute inset-0 bg-white rounded-[3rem] border border-[#9bb4c4]/20 overflow-hidden shadow-2xl">
-            <img src="/assets/images/getstudentimage.jpg" alt="Torlap Ritchai" class="w-full h-full object-cover">
+
+          <div class="absolute inset-0 bg-white rounded-[3.5rem] border border-[#9bb4c4]/20 overflow-hidden shadow-2xl">
+
+            <div *ngFor="let img of heroImages; let i = index" class="absolute inset-0 w-full h-full"
+              [class.hero-img-active]="currentHeroIndex() === i" [class.hero-img-leaving]="previousHeroIndex() === i"
+              [class.hero-img-hidden]="currentHeroIndex() !== i && previousHeroIndex() !== i">
+              <img [src]="img" class="w-full h-full object-cover">
+            </div>
+
+            <div
+              class="absolute inset-x-0 top-1/2 -translate-y-1/2 px-4 hidden md:flex justify-between z-30 opacity-0 group-hover:opacity-100 transition-opacity">
+              <button (click)="prevHero()"
+                class="w-12 h-12 rounded-full bg-white/90 backdrop-blur shadow-lg flex items-center justify-center text-[#1e2d3d] hover:bg-[#1e2d3d] hover:text-white transition-all">
+                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="3">
+                  <path d="m15 18-6-6 6-6" />
+                </svg>
+              </button>
+              <button (click)="nextHero()"
+                class="w-12 h-12 rounded-full bg-white/90 backdrop-blur shadow-lg flex items-center justify-center text-[#1e2d3d] hover:bg-[#1e2d3d] hover:text-white transition-all">
+                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="3">
+                  <path d="m9 18 6-6-6-6" />
+                </svg>
+              </button>
+            </div>
+
+            <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-30">
+              <div *ngFor="let img of heroImages; let i = index" (click)="currentHeroIndex.set(i)"
+                class="h-1.5 rounded-full transition-all cursor-pointer"
+                [class]="currentHeroIndex() === i ? 'bg-[#1e2d3d] w-6' : 'bg-[#1e2d3d]/20 w-1.5'">
+              </div>
+            </div>
+          </div>
+
+          <div class="absolute -bottom-10 left-0 right-0 text-center md:hidden">
+            <span class="text-[10px] font-black text-[#50728c]/40 uppercase tracking-[0.3em] animate-pulse">Swipe to
+              slide</span>
           </div>
         </div>
       </div>
+
     </section>
 
     <!-- ===== Selected Projects Section ===== -->

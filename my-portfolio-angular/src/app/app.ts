@@ -195,6 +195,39 @@ export class App {
     },
   ];
 
+
+  heroImages: string[] = [
+    'assets/images/getstudentimage.jpg',
+    'assets/images/certificate/cer-start-the-ux.png',
+    'assets/images/certificate/cer-design-a-user.png',
+  ];
+  currentHeroIndex = signal(0);
+  previousHeroIndex = signal(-1); // เก็บค่ารูปก่อนหน้าเพื่อทำ Animation ขาออก
+  private touchStartX = 0;
+
+  nextHero() {
+    this.previousHeroIndex.set(this.currentHeroIndex());
+    this.currentHeroIndex.update(val => (val + 1) % this.heroImages.length);
+  }
+
+  prevHero() {
+    this.previousHeroIndex.set(this.currentHeroIndex());
+    this.currentHeroIndex.update(val => (val - 1 + this.heroImages.length) % this.heroImages.length);
+  }
+
+  // ฟังก์ชันตรวจจับการปัด (Swipe) สำหรับมือถือ
+  onHeroTouchStart(event: TouchEvent) {
+    this.touchStartX = event.touches[0].clientX;
+  }
+
+  onHeroTouchEnd(event: TouchEvent) {
+    const touchEndX = event.changedTouches[0].clientX;
+    const deltaX = this.touchStartX - touchEndX;
+
+    if (Math.abs(deltaX) > 50) { // ปัดมากกว่า 50px
+      deltaX > 0 ? this.nextHero() : this.prevHero();
+    }
+  }
   selectedProject: any = null;
   isEmailCopied: boolean = false;
 
