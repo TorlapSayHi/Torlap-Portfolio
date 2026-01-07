@@ -197,9 +197,12 @@ export class App {
 
 
   heroImages: string[] = [
+    'assets/images/torlap-img-5.jpg',
     'assets/images/getstudentimage.jpg',
-    'assets/images/certificate/cer-start-the-ux.png',
-    'assets/images/certificate/cer-design-a-user.png',
+    'assets/images/torlap-img-1.jpg',
+    'assets/images/torlap-img-2.jpg',
+    'assets/images/torlap-img-3.jpg',
+    'assets/images/torlap-img-4.jpg',
   ];
   currentHeroIndex = signal(0);
   previousHeroIndex = signal(-1); // เก็บค่ารูปก่อนหน้าเพื่อทำ Animation ขาออก
