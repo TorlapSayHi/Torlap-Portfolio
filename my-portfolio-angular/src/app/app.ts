@@ -1,7 +1,9 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, HostListener, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
+/** * Interface: กำหนดโครงสร้างข้อมูลของ Project
+ * เพื่อให้ง่ายต่อการใช้งานและป้องกันความผิดพลาดในการพิมพ์ชื่อฟิลด์
+ */
 interface Project {
   title: string;
   company: string;
@@ -23,6 +25,8 @@ interface Project {
 })
 export class App {
   protected readonly title = signal('my-portfolio-angular');
+  /** *ส่วนรวบรวมข้อมูลผลงาน (Projects)
+     */
   projects: Project[] = [
     {
       title: 'Torslate',
@@ -101,7 +105,8 @@ export class App {
     }
   ];
 
-
+  /** * ส่วนรวบรวมข้อมูลเกียรติบัตร (Certificates)
+     */
   certificates = [
     {
       title: 'Data Analytics Foundation',
@@ -193,11 +198,15 @@ export class App {
   selectedProject: any = null;
   isEmailCopied: boolean = false;
 
+  /** * เปิด Modal แสดงรายละเอียดโปรเจค
+     */
   openProject(project: any) {
     this.selectedProject = project;
     document.body.style.overflow = 'hidden';
   }
 
+  /** * เลื่อนดูเกียรติบัตร (Certificates) แนวนอน
+     */
   scrollCertificates(direction: number) {
     const container = document.getElementById('certContainer');
     if (container) {
@@ -209,24 +218,30 @@ export class App {
     }
   }
 
-scrollProjects(direction: number) {
-  const container = document.getElementById('projectContainer');
-  if (container) {
-    // กำหนดระยะการเลื่อน (ขนาดการ์ด 400px + gap 32px = 432px)
-    const scrollAmount = window.innerWidth < 768 ? window.innerWidth * 0.85 : 432;
-    container.scrollBy({
-      left: direction * scrollAmount,
-      behavior: 'smooth'
-    });
+  /** * เลื่อนดูโปรเจค (Projects) แนวนอน
+     */
+  scrollProjects(direction: number) {
+    const container = document.getElementById('projectContainer');
+    if (container) {
+      // คำนวณระยะการเลื่อนตามขนาดหน้าจอ (Mobile จะเลื่อนเยอะกว่า PC ในแง่สัดส่วน)
+      const scrollAmount = window.innerWidth < 768 ? window.innerWidth * 0.85 : 432;
+      container.scrollBy({
+        left: direction * scrollAmount,
+        behavior: 'smooth'
+      });
+    }
   }
-}
 
   isShowScrollButton = false;
+  /** * ตรวจจับการ Scroll หน้าจอ เพื่อแสดงปุ่ม Back to Top
+     */
   @HostListener('window:scroll', [])
   onWindowScroll() {
+    // ถ้าเลื่อนลงมามากกว่า 300px ให้แสดงปุ่ม
     this.isShowScrollButton = window.pageYOffset > 300;
   }
-
+  /** * เลื่อนหน้าจอกลับไปด้านบนสุด
+  */
   scrollToTop() {
     window.scrollTo({
       top: 0,
@@ -234,6 +249,8 @@ scrollProjects(direction: number) {
     });
   }
 
+  /** * เลื่อนดูรูปถัดไปใน Modal
+  */
   nextModalImage() {
     if (this.selectedProject) {
       if (this.selectedProject.currentImgIndex < this.selectedProject.images.length - 1) {
@@ -244,6 +261,8 @@ scrollProjects(direction: number) {
     }
   }
 
+  /** * เลื่อนดูรูปก่อนหน้าใน Modal
+  */
   prevModalImage() {
     if (this.selectedProject) {
       if (this.selectedProject.currentImgIndex > 0) {
@@ -254,6 +273,8 @@ scrollProjects(direction: number) {
     }
   }
 
+  /** * ปิด Modal และรีเซ็ตค่าต่างๆ
+     */
   closeProject() {
     if (this.selectedProject) {
       this.selectedProject.currentImgIndex = 0;
@@ -262,20 +283,21 @@ scrollProjects(direction: number) {
     document.body.style.overflow = 'auto';
   }
 
-copyEmail() {
-  const email = 'torlap.ritchai@gmail.com';
-  // ใช้ Navigator API ของ Browser เพื่อสั่ง Copy
-  navigator.clipboard.writeText(email).then(() => {
-    // แสดงสถานะ Copied
-    this.isEmailCopied = true;
-    // ตั้งเวลา 2 วินาทีให้กลับมาแสดงเมลเหมือนเดิม
-    setTimeout(() => {
-      this.isEmailCopied = false;
-    }, 2000);
-  }).catch(err => {
-    console.error('Could not copy text: ', err);
-    // fallback กรณี Browser ไม่รองรับ (เช่น เปิดใน Webview บางตัว)
-    window.location.href = `mailto:${email}`;
-  });
-}
+  /** * คัดลอกอีเมลลง Clipboard และแสดงสถานะแจ้งเตือน
+  */
+  copyEmail() {
+    const email = 'torlap.ritchai@gmail.com';
+    navigator.clipboard.writeText(email).then(() => {
+      // เปลี่ยนสถานะเป็น Copied
+      this.isEmailCopied = true;
+      // หลังจาก 2 วินาที ให้กลับเป็นสถานะปกติ
+      setTimeout(() => {
+        this.isEmailCopied = false;
+      }, 2000);
+    }).catch(err => {
+      console.error('Could not copy text: ', err);
+      // ถ้า Browser ไม่รองรับ ให้เปิด App Mail แทน (Fallback)
+      window.location.href = `mailto:${email}`;
+    });
+  }
 }

@@ -1,72 +1,137 @@
-/* การซ่อน Scrollbar */
+/* =========================================
+   1. ส่วนการจัดการ Scrollbar (ซ่อนแถบเลื่อน)
+   ========================================= */
+
+/* ซ่อน Scrollbar สำหรับ Browser ตระกูล Chrome, Safari และ Edge */
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
+/* ซ่อน Scrollbar สำหรับ Internet Explorer, Edge (รุ่นเก่า) และ Firefox */
 .hide-scrollbar {
   -ms-overflow-style: none;
+  /* IE and Edge */
   scrollbar-width: none;
+  /* Firefox */
 }
 
-/* Animations */
+
+/* =========================================
+   2. Keyframes (นิยามลักษณะการเคลื่อนไหว)
+   ========================================= */
+
+/* อนิเมชันเลื่อนขึ้น: เริ่มจากโปร่งใสและอยู่ต่ำลงไป 40px แล้วค่อยๆ โผล่ขึ้นมา */
 @keyframes slideUp {
-  from { opacity: 0; transform: translateY(40px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
+/* อนิเมชันค่อยๆ ปรากฏ: เริ่มจากโปร่งใสจนเห็นชัด 100% */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
+/* อนิเมชันลอย: เลื่อนขึ้น-ลง สลับไปมาอย่างต่อเนื่อง */
 @keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-15px); }
-  100% { transform: translateY(0px); }
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
 }
 
+
+/* =========================================
+   3. Animation Classes (คลาสสำหรับเรียกใช้งาน)
+   ========================================= */
+
+/* ใช้สำหรับ Element ที่ต้องการให้เลื่อนขึ้นเมื่อปรากฏ (เช่น Card ต่างๆ) */
 .animate-slide-up {
   animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+/* ใช้สำหรับ Element ที่ต้องการให้ค่อยๆ จางขึ้นมา */
 .animate-fade-in {
   animation: fadeIn 0.5s ease-out forwards;
 }
 
+/* ใช้สำหรับ Element ที่ต้องการให้ลอยขึ้นลงตลอดเวลา (เช่น ไอคอน หรือรูปภาพตกแต่ง) */
 .animate-float {
   animation: float 5s ease-in-out infinite;
 }
 
-/* สำหรับ Mobile: ให้ Project modal เลื่อนขึ้นมาเป็น Bottom Sheet */
+
+/* =========================================
+   4. Responsive Design (ปรับแต่งตามขนาดหน้าจอ)
+   ========================================= */
+
+/* สำหรับหน้าจอขนาดมือถือ (ไม่เกิน 768px): ปรับความเร็ว Slide Up ให้เร็วขึ้น */
 @media (max-width: 768px) {
   .animate-slide-up {
     animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 }
 
-/* เพิ่ม Smooth Scroll ให้กับทั้งหน้า */
+
+/* =========================================
+   5. Global Styles (การตั้งค่าทั่วไปของหน้าเว็บ)
+   ========================================= */
+
+/* ตั้งค่าให้การเลื่อนหน้าจอ (Scroll) ทั้งหมดมีความนุ่มนวล */
 html {
   scroll-behavior: smooth;
 }
 
-/* Selection Color */
+/* ปรับแต่งสีเมื่อผู้ใช้ลากเมาส์คลุม (Highlight) ข้อความ */
 ::selection {
   background: #1e2d3d;
+  /* สีพื้นหลัง */
   color: white;
+  /* สีตัวอักษร */
 }
 
+
+/* =========================================
+   6. Custom Scrollbar (แต่งแถบเลื่อนให้สวยงาม)
+   ========================================= */
+
+/* กำหนดความกว้างของแถบเลื่อน */
 .custom-scrollbar::-webkit-scrollbar {
   width: 5px;
 }
 
+/* พื้นหลังของรางเลื่อน (ตั้งเป็นโปร่งใส) */
 .custom-scrollbar::-webkit-scrollbar-track {
   background: transparent;
 }
 
+/* ลักษณะของตัวเลื่อน (Thumb) */
 .custom-scrollbar::-webkit-scrollbar-thumb {
   background: #9bb4c450;
+  /* สีเทาฟ้าแบบโปร่งแสง */
   border-radius: 10px;
 }
 
+/* เปลี่ยนสีตัวเลื่อนเมื่อเอาเมาส์ไปวาง (Hover) */
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: #9bb4c4;
 }
