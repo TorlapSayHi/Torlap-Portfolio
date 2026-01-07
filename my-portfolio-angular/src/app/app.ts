@@ -1,4 +1,4 @@
-import { Component, HostListener, signal } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, HostListener, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -18,7 +18,8 @@ interface Project {
   selector: 'app-root',
   imports: [CommonModule],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class App {
   protected readonly title = signal('my-portfolio-angular');
@@ -80,6 +81,21 @@ export class App {
         'assets/images/My-Location-7.png',
         'assets/images/My-Location-8.png',
         'assets/images/My-Location-9.png',
+      ],
+      currentImgIndex: 0
+    },
+    {
+      title: 'Torlap Portfolio',
+      company: '',
+      year: '2026',
+      color: 'bg-orange-50 text-orange-600',
+      hover: 'hover:text-orange-600',
+      description: 'เว็บไซต์ส่วนตัวของ Torlap Ritchai',
+      tags: ['Angular', 'Tailwind CSS', 'TypeScript'],
+      details: 'เว็บไซต์ส่วนตัวของ Torlap Ritchai ที่แสดงผลงานและประสบการณ์การทำงาน โดยใช้ Angular Tailwind-CSS TypeScript เพื่อสร้างประสบการณ์ผู้ใช้ที่ทันสมัยและตอบสนองได้ดี พร้อมดีไซน์ที่เรียบง่ายและใช้งานง่าย *เว็ปที่คุณกำลังดูอยู่ ณ ตอนนี้*',
+      images: [
+        'assets/images/torlap-cv.png',
+        'assets/images/torlap-cv-mobile.png',
       ],
       currentImgIndex: 0
     }
@@ -175,6 +191,7 @@ export class App {
   ];
 
   selectedProject: any = null;
+  isEmailCopied: boolean = false;
 
   openProject(project: any) {
     this.selectedProject = project;
@@ -191,6 +208,18 @@ export class App {
       });
     }
   }
+
+scrollProjects(direction: number) {
+  const container = document.getElementById('projectContainer');
+  if (container) {
+    // กำหนดระยะการเลื่อน (ขนาดการ์ด 400px + gap 32px = 432px)
+    const scrollAmount = window.innerWidth < 768 ? window.innerWidth * 0.85 : 432;
+    container.scrollBy({
+      left: direction * scrollAmount,
+      behavior: 'smooth'
+    });
+  }
+}
 
   isShowScrollButton = false;
   @HostListener('window:scroll', [])
@@ -232,4 +261,21 @@ export class App {
     this.selectedProject = null;
     document.body.style.overflow = 'auto';
   }
+
+copyEmail() {
+  const email = 'torlap.ritchai@gmail.com';
+  // ใช้ Navigator API ของ Browser เพื่อสั่ง Copy
+  navigator.clipboard.writeText(email).then(() => {
+    // แสดงสถานะ Copied
+    this.isEmailCopied = true;
+    // ตั้งเวลา 2 วินาทีให้กลับมาแสดงเมลเหมือนเดิม
+    setTimeout(() => {
+      this.isEmailCopied = false;
+    }, 2000);
+  }).catch(err => {
+    console.error('Could not copy text: ', err);
+    // fallback กรณี Browser ไม่รองรับ (เช่น เปิดใน Webview บางตัว)
+    window.location.href = `mailto:${email}`;
+  });
+}
 }

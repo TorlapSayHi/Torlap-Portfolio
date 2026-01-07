@@ -1,35 +1,72 @@
-.custom-scrollbar-hidden::-webkit-scrollbar {
+/* การซ่อน Scrollbar */
+.hide-scrollbar::-webkit-scrollbar {
   display: none;
 }
-
-.custom-scrollbar-hidden {
+.hide-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
 
+/* Animations */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.98);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .animate-fade-in {
-  animation: fadeIn 0.4s ease-out forwards;
+  animation: fadeIn 0.5s ease-out forwards;
 }
 
-#projects {
-  overflow-x: hidden;
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+/* สำหรับ Mobile: ให้ Project modal เลื่อนขึ้นมาเป็น Bottom Sheet */
+@media (max-width: 768px) {
+  .animate-slide-up {
+    animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+}
+
+/* เพิ่ม Smooth Scroll ให้กับทั้งหน้า */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection Color */
+::selection {
+  background: #1e2d3d;
+  color: white;
 }
 
 .custom-scrollbar::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
 }
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background-color: #9bb4c4;
+  background: #9bb4c450;
   border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #9bb4c4;
 }
