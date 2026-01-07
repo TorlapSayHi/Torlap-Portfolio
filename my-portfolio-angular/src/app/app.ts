@@ -13,6 +13,7 @@ interface Project {
   description: string;
   tags: string[];
   details: string;
+  video?: string[];
   images: string[];
   currentImgIndex: number;
 }
@@ -34,9 +35,10 @@ export class App {
       year: '2025',
       color: 'bg-purple-50 text-purple-600',
       hover: 'hover:text-purple-600',
-      description: 'โปรแกรมแปลภาษาบนหน้าจอแบบเรียลไทม์ด้วย AI (OCR)',
+      description: 'โปรแกรมแปลภาษาบนหน้าจอแบบเรียลไทม์ด้วย (OCR)',
       tags: ['Google Cloud Vision', 'Translation API', 'Python'],
-      details: 'เครื่องมือแปลภาษาบนหน้าจอที่ผสานพลัง AI จาก Google Cloud Vision และ Translation API เพื่อแปลข้อความที่คัดลอกไม่ได้แบบเรียลไทม์ มาพร้อมระบบ Floating Window ที่ปรับแต่งได้อิสระและสั่งงานผ่าน Hotkey ช่วยลดกำแพงภาษาในการใช้งานคอมพิวเตอร์ได้อย่างมีประสิทธิภาพ จัดการความปลอดภัยของระบบด้วย Google Cloud CLI',
+      details: 'เครื่องมือแปลภาษาบนหน้าจอที่ผสานพลังจาก Google Cloud Vision และ Translation API เพื่อแปลข้อความที่คัดลอกไม่ได้แบบเรียลไทม์ มาพร้อมระบบ Floating Window ที่ปรับแต่งได้อิสระและสั่งงานผ่าน Hotkey ช่วยลดกำแพงภาษาในการใช้งานคอมพิวเตอร์ได้อย่างมีประสิทธิภาพ จัดการความปลอดภัยของระบบด้วย Google Cloud CLI',
+      video: ['assets/videos/Torslate-video-demo.mp4'],
       images: [
         'assets/images/Torslate-1.png',
         'assets/images/Torslate-2.png',
@@ -56,7 +58,11 @@ export class App {
       hover: 'hover:text-blue-600',
       description: 'ระบบบริหารจัดการวิสาหกิจชุมชนท่องเที่ยวร่วมกับ NECTEC',
       tags: ['React', 'Node.js', 'TypeScript', 'Prisma', 'Docker'],
-      details: 'ระบบบริหารจัดการวิสาหกิจชุมชนท่องเที่ยวที่พัฒนาร่วมกับ NECTEC โดยใช้ React และ Node.js (TypeScript) จุดเด่นคือระบบจัดการสิทธิ์ผู้ใช้งานแบบ 4 ระดับ และโครงสร้างหลังบ้านที่รองรับการทำงานซับซ้อนได้อย่างเสถียร ตัวระบบออกแบบมาเป็น Responsive เพื่อให้ใช้งานได้ทุกอุปกรณ์ และใช้ Docker เพื่อควบคุมสภาพแวดล้อมการทำงานให้เหมือนกันในทุกขั้นตอน',
+      details: 'ระบบบริหารจัดการวิสาหกิจชุมชนท่องเที่ยวที่พัฒนาร่วมกับ NECTEC โดยใช้ React และ Express.js, TypeScript จุดเด่นคือระบบจัดการสิทธิ์ผู้ใช้งานแบบ 4 ระดับ และตัวระบบออกแบบให้ดูเรียบง่าย ใช้งานสะดวก และใช้ Docker เพื่อควบคุมสภาพแวดล้อมการทำงานให้เหมือนกันในทุกขั้นตอน',
+      video: [
+        'assets/videos/Cultura-video-demo-1.mp4',
+        'assets/videos/Cultura-video-demo-2.mp4'
+      ],
       images: [
         'assets/images/Cultura-1.png',
         'assets/images/Cultura-2.png',
@@ -75,6 +81,7 @@ export class App {
       description: 'เครื่องมือวิเคราะห์ทำเลเพื่อขยายสาขาร่วมกับ MyOrder',
       tags: ['Laravel', 'MySQL', 'Google Maps API'],
       details: 'แอปพลิเคชัน Full-Stack สำหรับวิเคราะห์พิกัดเชิงธุรกิจที่ช่วยในการตัดสินใจขยายสาขาของ MyOrder โดยใช้ Google Maps API เพื่อแสดงผลยอดขายและตำแหน่ง GPS ลงบนแผนที่แบบ Interactive ระบบช่วยให้นักวิเคราะห์มองเห็นภาพรวมของพื้นที่ที่มีศักยภาพได้อย่างชัดเจน พัฒนาด้วย Laravel และ MySQL พร้อมระบบ Google Sign-In เพื่อความสะดวกและปลอดภัย',
+      video: ['assets/videos/My-Location-video-demo.mp4'],
       images: [
         'assets/images/My-Location-1.png',
         'assets/images/My-Location-2.png',
@@ -289,7 +296,11 @@ export class App {
   */
   nextModalImage() {
     if (this.selectedProject) {
-      if (this.selectedProject.currentImgIndex < this.selectedProject.images.length - 1) {
+      // นับจำนวนวิดีโอที่มี (ถ้าไม่มีให้เป็น 0)
+      const videoCount = this.selectedProject.video?.length || 0;
+      const totalItems = this.selectedProject.images.length + videoCount;
+
+      if (this.selectedProject.currentImgIndex < totalItems - 1) {
         this.selectedProject.currentImgIndex++;
       } else {
         this.selectedProject.currentImgIndex = 0;
@@ -301,10 +312,13 @@ export class App {
   */
   prevModalImage() {
     if (this.selectedProject) {
+      const videoCount = this.selectedProject.video?.length || 0;
+      const totalItems = this.selectedProject.images.length + videoCount;
+
       if (this.selectedProject.currentImgIndex > 0) {
         this.selectedProject.currentImgIndex--;
       } else {
-        this.selectedProject.currentImgIndex = this.selectedProject.images.length - 1;
+        this.selectedProject.currentImgIndex = totalItems - 1;
       }
     }
   }
