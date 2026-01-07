@@ -26,5 +26,8 @@ This project is deployed using a multi-stage Docker build:
 # Build the image
 docker build -t portfolio-image .
 
+# remove container
+docker rm -f torlap-new
+
 # Run the container
 docker run -d --name torlap-new -p 8080:80 portfolio-image
