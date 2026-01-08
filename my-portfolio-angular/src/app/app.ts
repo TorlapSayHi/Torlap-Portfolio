@@ -1,9 +1,8 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, HostListener, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-/** * Interface: กำหนดโครงสร้างข้อมูลของ Project
- * เพื่อให้ง่ายต่อการใช้งานและป้องกันความผิดพลาดในการพิมพ์ชื่อฟิลด์
- */
+// กำหนดโครงสร้างข้อมูลของ Project
+// เพื่อควบคุม type ของข้อมูลและลดข้อผิดพลาดในการใช้งาน
 interface Project {
   title: string;
   company: string;
@@ -24,11 +23,15 @@ interface Project {
   styleUrl: './app.css',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
+
+// คลาสหลักของแอปพลิเคชัน ทำหน้าที่ควบคุม logic ทั้งหมดของหน้า
 export class App {
   protected readonly title = signal('my-portfolio-angular');
-  /** *ส่วนรวบรวมข้อมูลผลงาน (Projects)
-     */
+  // ตัวแปรเก็บข้อมูลผลงานทั้งหมด
+  // ใช้แสดงในส่วน Selected Projects และ Modal
   projects: Project[] = [
+    // ข้อมูลของโปรเจกต์แต่ละชิ้น
+    // ประกอบด้วยชื่อ บริษัท ปี เทคโนโลยี รายละเอียด รูป และวิดีโอ
     {
       title: 'Torslate',
       company: '',
@@ -112,9 +115,11 @@ export class App {
     }
   ];
 
-  /** * ส่วนรวบรวมข้อมูลเกียรติบัตร (Certificates)
-     */
+  // ตัวแปรเก็บข้อมูลเกียรติบัตร
+  // ใช้แสดงใน Section Certificates
   certificates = [
+    // ข้อมูลเกียรติบัตรแต่ละใบ
+    // ประกอบด้วยชื่อ ผู้ออก วันที่ รูป และคำอธิบาย
     {
       title: 'Data Analytics Foundation',
       issuer: 'Voxy',
@@ -202,7 +207,7 @@ export class App {
     },
   ];
 
-
+  // เก็บ path รูปสำหรับ Hero Image Slider
   heroImages: string[] = [
     'assets/images/torlap-img-5.jpg',
     'assets/images/getstudentimage.jpg',
@@ -211,45 +216,64 @@ export class App {
     'assets/images/torlap-img-3.jpg',
     'assets/images/torlap-img-4.jpg',
   ];
+  // ใช้เก็บ index รูป Hero ปัจจุบัน (Reactive)
   currentHeroIndex = signal(0);
-  previousHeroIndex = signal(-1); // เก็บค่ารูปก่อนหน้าเพื่อทำ Animation ขาออก
+  // ใช้เก็บ index รูปก่อนหน้า
+  // เพื่อใช้ควบคุม animation ตอนเปลี่ยนรูป
+  previousHeroIndex = signal(-1);
+  // ใช้เก็บตำแหน่งเริ่มต้นของการ touch
+  // สำหรับคำนวณ gesture การปัดบนมือถือ
   private touchStartX = 0;
 
+  // ใช้เก็บทิศทางการเปลี่ยนรูป Hero
+  heroDirection: 'next' | 'prev' = 'next';
+  // ฟังก์ชันเปลี่ยนรูป Hero ไปภาพถัดไป
+  // พร้อมบันทึกรูปก่อนหน้าเพื่อใช้ animation
   nextHero() {
+    this.heroDirection = 'next'; // บอกว่ากำลังไปขวา → รูปเก่าเด้งออกซ้าย
     this.previousHeroIndex.set(this.currentHeroIndex());
     this.currentHeroIndex.update(val => (val + 1) % this.heroImages.length);
   }
 
+  // ฟังก์ชันเปลี่ยนรูป Hero ไปภาพก่อนหน้า
   prevHero() {
+    this.heroDirection = 'prev'; // บอกว่ากำลังกลับซ้าย → รูปเก่าเด้งออกขวา
     this.previousHeroIndex.set(this.currentHeroIndex());
     this.currentHeroIndex.update(val => (val - 1 + this.heroImages.length) % this.heroImages.length);
   }
 
-  // ฟังก์ชันตรวจจับการปัด (Swipe) สำหรับมือถือ
+  // ตรวจจับจุดเริ่มต้นการ touch
+  // สำหรับรองรับการ swipe บนมือถือ
   onHeroTouchStart(event: TouchEvent) {
     this.touchStartX = event.touches[0].clientX;
   }
 
+  // ตรวจจับการสิ้นสุดการ touch
+  // คำนวณทิศทางการปัดเพื่อเลื่อนรูป Hero
   onHeroTouchEnd(event: TouchEvent) {
     const touchEndX = event.changedTouches[0].clientX;
     const deltaX = this.touchStartX - touchEndX;
-
-    if (Math.abs(deltaX) > 50) { // ปัดมากกว่า 50px
+    // ปัดมากกว่า 50px
+    if (Math.abs(deltaX) > 50) {
       deltaX > 0 ? this.nextHero() : this.prevHero();
     }
   }
+  // เก็บข้อมูลโปรเจกต์ที่ถูกเลือก
+  // ใช้ควบคุมการเปิด/ปิด Modal
   selectedProject: any = null;
+  // ใช้เก็บสถานะว่าคัดลอกอีเมลแล้วหรือยัง
+  // เพื่อแสดงข้อความแจ้งเตือนใน UI
   isEmailCopied: boolean = false;
 
-  /** * เปิด Modal แสดงรายละเอียดโปรเจค
-     */
+  // เปิด Modal แสดงรายละเอียดโปรเจกต์
+  // และปิดการ scroll ของ body
   openProject(project: any) {
     this.selectedProject = project;
     document.body.style.overflow = 'hidden';
   }
 
-  /** * เลื่อนดูเกียรติบัตร (Certificates) แนวนอน
-     */
+  // เลื่อนรายการ Certificates แนวนอน
+  // ใช้กับปุ่มเลื่อนซ้าย-ขวา
   scrollCertificates(direction: number) {
     const container = document.getElementById('certContainer');
     if (container) {
@@ -261,8 +285,8 @@ export class App {
     }
   }
 
-  /** * เลื่อนดูโปรเจค (Projects) แนวนอน
-     */
+  // เลื่อนรายการ Projects แนวนอน
+  // ปรับระยะเลื่อนตามขนาดหน้าจอ (Responsive)
   scrollProjects(direction: number) {
     const container = document.getElementById('projectContainer');
     if (container) {
@@ -275,16 +299,18 @@ export class App {
     }
   }
 
+  // ใช้ควบคุมการแสดงปุ่ม Scroll to Top
   isShowScrollButton = false;
-  /** * ตรวจจับการ Scroll หน้าจอ เพื่อแสดงปุ่ม Back to Top
-     */
+  // ดัก event การ scroll ของหน้าจอ
+  // เพื่อเช็คตำแหน่ง scroll
   @HostListener('window:scroll', [])
+  // ตรวจสอบตำแหน่ง scroll
+  // ถ้าเกิน 300px จะแสดงปุ่ม Back to Top
   onWindowScroll() {
-    // ถ้าเลื่อนลงมามากกว่า 300px ให้แสดงปุ่ม
     this.isShowScrollButton = window.pageYOffset > 300;
   }
-  /** * เลื่อนหน้าจอกลับไปด้านบนสุด
-  */
+
+  // เลื่อนหน้าจอกลับไปด้านบนสุดแบบ smooth
   scrollToTop() {
     window.scrollTo({
       top: 0,
@@ -292,8 +318,8 @@ export class App {
     });
   }
 
-  /** * เลื่อนดูรูปถัดไปใน Modal
-  */
+  // เลื่อนดูรูปหรือวิดีโอถัดไปใน Modal
+  // รองรับทั้ง images และ video
   nextModalImage() {
     if (this.selectedProject) {
       // นับจำนวนวิดีโอที่มี (ถ้าไม่มีให้เป็น 0)
@@ -308,8 +334,7 @@ export class App {
     }
   }
 
-  /** * เลื่อนดูรูปก่อนหน้าใน Modal
-  */
+  // เลื่อนดูรูปหรือวิดีโอก่อนหน้าใน Modal
   prevModalImage() {
     if (this.selectedProject) {
       const videoCount = this.selectedProject.video?.length || 0;
@@ -323,8 +348,8 @@ export class App {
     }
   }
 
-  /** * ปิด Modal และรีเซ็ตค่าต่างๆ
-     */
+  // ปิด Modal
+  // รีเซ็ต index รูป และเปิด scroll ของ body กลับมา
   closeProject() {
     if (this.selectedProject) {
       this.selectedProject.currentImgIndex = 0;
@@ -333,8 +358,8 @@ export class App {
     document.body.style.overflow = 'auto';
   }
 
-  /** * คัดลอกอีเมลลง Clipboard และแสดงสถานะแจ้งเตือน
-  */
+  // คัดลอกอีเมลไปยัง Clipboard
+  // แสดงสถานะ Copied และมี fallback สำหรับ browser ที่ไม่รองรับ
   copyEmail() {
     const email = 'torlap.ritchai@gmail.com';
     navigator.clipboard.writeText(email).then(() => {

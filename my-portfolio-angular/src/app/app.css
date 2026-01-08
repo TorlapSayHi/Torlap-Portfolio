@@ -1,7 +1,3 @@
-/* =========================================
-   1. ส่วนการจัดการ Scrollbar (ซ่อนแถบเลื่อน)
-   ========================================= */
-
 /* ซ่อน Scrollbar สำหรับ Browser ตระกูล Chrome, Safari และ Edge */
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
@@ -10,17 +6,10 @@
 /* ซ่อน Scrollbar สำหรับ Internet Explorer, Edge (รุ่นเก่า) และ Firefox */
 .hide-scrollbar {
   -ms-overflow-style: none;
-  /* IE and Edge */
   scrollbar-width: none;
-  /* Firefox */
 }
 
-
-/* =========================================
-   2. Keyframes (นิยามลักษณะการเคลื่อนไหว)
-   ========================================= */
-
-/* อนิเมชันเลื่อนขึ้น: เริ่มจากโปร่งใสและอยู่ต่ำลงไป 40px แล้วค่อยๆ โผล่ขึ้นมา */
+/* กำหนด animation สำหรับ element ที่ต้องการเลื่อนขึ้นจากด้านล่างริ่มจากโปร่งใสและเลื่อนขึ้นมา 40px */
 @keyframes slideUp {
   from {
     opacity: 0;
@@ -33,7 +22,7 @@
   }
 }
 
-/* อนิเมชันค่อยๆ ปรากฏ: เริ่มจากโปร่งใสจนเห็นชัด 100% */
+/* กำหนด animation สำหรับ element ที่ต้องการค่อยๆ ปรากฏ จากโปร่งใสจนเห็นชัด */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -44,7 +33,7 @@
   }
 }
 
-/* อนิเมชันลอย: เลื่อนขึ้น-ลง สลับไปมาอย่างต่อเนื่อง */
+/* กำหนด animation สำหรับ element ที่ต้องการลอยขึ้นลงอย่างต่อเนื่อง เช่น รูปหรือไอคอนตกแต่ง */
 @keyframes float {
   0% {
     transform: translateY(0px);
@@ -59,42 +48,27 @@
   }
 }
 
-
-/* =========================================
-   3. Animation Classes (คลาสสำหรับเรียกใช้งาน)
-   ========================================= */
-
-/* ใช้สำหรับ Element ที่ต้องการให้เลื่อนขึ้นเมื่อปรากฏ (เช่น Card ต่างๆ) */
+/* สำหรับเรียกใช้ slideUp animation ใช้กับ card หรือ section ที่ต้องการให้โผล่ขึ้น */
 .animate-slide-up {
   animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* ใช้สำหรับ Element ที่ต้องการให้ค่อยๆ จางขึ้นมา */
+/* สำหรับเรียกใช้ fadeIn animation ใช้กับ modal หรือรูปที่ต้องการให้ปรากฏนุ่มนวล */
 .animate-fade-in {
   animation: fadeIn 0.5s ease-out forwards;
 }
 
-/* ใช้สำหรับ Element ที่ต้องการให้ลอยขึ้นลงตลอดเวลา (เช่น ไอคอน หรือรูปภาพตกแต่ง) */
+/* สำหรับเรียกใช้ float animation ที่ต้องการให้ลอยขึ้นลงตลอดเวลา (เช่น ไอคอน หรือรูปภาพตกแต่ง) */
 .animate-float {
   animation: float 5s ease-in-out infinite;
 }
 
-
-/* =========================================
-   4. Responsive Design (ปรับแต่งตามขนาดหน้าจอ)
-   ========================================= */
-
-/* สำหรับหน้าจอขนาดมือถือ (ไม่เกิน 768px): ปรับความเร็ว Slide Up ให้เร็วขึ้น */
+/* ปรับความเร็วของ slideUp animation สำหรับหน้าจอมือถือให้เร็วขึ้น */
 @media (max-width: 768px) {
   .animate-slide-up {
     animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 }
-
-
-/* =========================================
-   5. Global Styles (การตั้งค่าทั่วไปของหน้าเว็บ)
-   ========================================= */
 
 /* ตั้งค่าให้การเลื่อนหน้าจอ (Scroll) ทั้งหมดมีความนุ่มนวล */
 html {
@@ -104,15 +78,8 @@ html {
 /* ปรับแต่งสีเมื่อผู้ใช้ลากเมาส์คลุม (Highlight) ข้อความ */
 ::selection {
   background: #1e2d3d;
-  /* สีพื้นหลัง */
   color: white;
-  /* สีตัวอักษร */
 }
-
-
-/* =========================================
-   6. Custom Scrollbar (แต่งแถบเลื่อนให้สวยงาม)
-   ========================================= */
 
 /* กำหนดความกว้างของแถบเลื่อน */
 .custom-scrollbar::-webkit-scrollbar {
@@ -136,7 +103,7 @@ html {
   background: #9bb4c4;
 }
 
-/* Animation รูปใหม่: ค่อยๆ จางเข้าและขยายขึ้นเล็กน้อย */
+/* Animation รูปใหม่ ค่อยๆ จางเข้าและขยายขึ้นเล็กน้อย */
 @keyframes heroFadeIn {
   from {
     opacity: 0;
@@ -149,7 +116,7 @@ html {
   }
 }
 
-/* Animation รูปเก่า: ลอยออกไปทางซ้ายบนพร้อมจางหาย */
+/* Animation รูปเก่า ลอยออกไปทางซ้ายบนพร้อมจางหาย */
 @keyframes flyOutTopLeft {
   0% {
     opacity: 1;
@@ -162,16 +129,39 @@ html {
   }
 }
 
+/* Animation รูปเก่า ลอยออกไปทางขวาบนพร้อมจางหาย */
+@keyframes flyOutTopRight {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(120px, -120px) scale(0.8) rotate(5deg);
+  }
+}
+
+
+/* ใช้กับรูป hero ที่กำลังแสดงอยู่ด้านหน้าสุด พร้อม animation เข้า */
 .hero-img-active {
   z-index: 10;
   animation: heroFadeIn 0.8s ease-out forwards;
 }
 
+/* ใช้กับรูป hero ที่กำลังถูกเปลี่ยนออกด้านซ้าย เล่น animation ลอยออก */
 .hero-img-leaving {
   z-index: 5;
   animation: flyOutTopLeft 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
+/* ใช้กับรูป hero ที่กำลังถูกเปลี่ยนออกด้านขวา เล่น animation ลอยออก */
+.hero-img-leaving-right {
+  z-index: 5;
+  animation: flyOutTopRight 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* ใช้กับรูป hero ที่ไม่ได้ใช้งาน ซ่อนไว้ไม่ให้แสดง */
 .hero-img-hidden {
   opacity: 0;
   z-index: 0;
