@@ -1,24 +1,29 @@
+<!-- div ครอบทั้งหน้าเว็บ กำหนดพื้นหลังแบบ gradient, ฟอนต์หลัก, สีตัวอักษร และสีตอน select ข้อความ -->
 <div
   class="min-h-screen bg-gradient-to-br from-[#f8f5f0] via-[#e9e1d1]/30 to-[#f0f4f8] font-sans text-[#1e2d3d] selection:bg-[#50728c]/20">
-
+  <!-- แถบเมนูด้านบนของเว็บไซต์ แบบ sticky ติดขอบบน มี backdrop blur และเส้นคั่นด้านล่าง -->
   <nav class="sticky top-0 z-[100] bg-white/60 backdrop-blur-xl border-b border-[#9bb4c4]/10">
     <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+      <!-- โลโก้ชื่อ TORLAP CV ใช้ gradient text เพื่อสร้างเอกลักษณ์ -->
       <span
         class="font-black tracking-tighter text-2xl bg-gradient-to-r from-[#1e2d3d] to-[#50728c] bg-clip-text text-transparent">TORLAP
         CV</span>
       <div class="flex items-center gap-4 md:gap-8">
+        <!-- ลิงก์สำหรับติดต่อผ่าน Email -->
         <a href="mailto:torlap.ritchai@gmail.com"
           class="text-xs font-bold uppercase tracking-widest hover:text-[#50728c] transition-all hover:-translate-y-0.5">Email</a>
+        <!-- ปุ่มลิงก์ไป GitHub พร้อมสไตล์ปุ่มและเงา -->
         <a href="https://github.com/TorlapSayHi" target="_blank"
           class="text-xs font-bold uppercase tracking-widest bg-[#1e2d3d] text-white px-4 py-2 rounded-full hover:bg-[#50728c] transition-all shadow-lg shadow-[#1e2d3d]/10">GitHub</a>
       </div>
     </div>
   </nav>
-
+  <!-- container หลักสำหรับเนื้อหาทั้งหมดของหน้า -->
   <main class="max-w-6xl mx-auto px-6 py-12 md:py-20">
+    <!-- ส่วน Hero แนะนำตัวผู้ใช้งาน แสดงชื่อ คำอธิบาย และรูปโปรไฟล์ -->
     <section class="flex flex-col md:flex-row items-center gap-12 mb-32 animate-slide-up">
-
       <div class="flex-1 text-center md:text-left order-2 md:order-1">
+        <!-- Badge แสดงสถานะ Available for Internship พร้อมจุดสีเขียวกระพริบ -->
         <div
           class="inline-flex items-center gap-2 px-4 py-1.5 bg-white border border-[#9bb4c4]/20 rounded-full mb-8 shadow-sm group cursor-default">
           <span class="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse"></span>
@@ -27,11 +32,11 @@
             Available for Internship
           </span>
         </div>
-
+        <!-- หัวข้อหลัก แสดงชื่อ-นามสกุลของเจ้าของเว็บไซต์ -->
         <h1 class="text-5xl md:text-8xl font-bold mb-8 tracking-tight text-[#1e2d3d] leading-[0.9]">
           I'm <span class="text-[#50728c]">Torlap</span> Ritchai
         </h1>
-
+        <!-- ข้อความแนะนำตัว (About Me) -->
         <p
           class="text-[#50728c] text-lg md:text-2xl mb-10 leading-relaxed max-w-2xl mx-auto md:mx-0 font-medium opacity-90">
           สวัสดี ผมเจ๋ง ผมเป็นนักพัฒนาที่เชื่อในการเรียนรู้ผ่านการลงมือทำ
@@ -39,6 +44,7 @@
         </p>
 
         <div class="flex flex-col sm:flex-row justify-center md:justify-start gap-5">
+          <!-- ปุ่มดาวน์โหลดไฟล์ CV -->
           <a href="/assets/cv-torlap.pdf" download="Torlap_Ritchai_CV.pdf"
             class="group px-10 py-4 bg-[#1e2d3d] text-white rounded-2xl font-bold hover:bg-[#50728c] hover:scale-105 transition-all flex items-center justify-center gap-3 shadow-2xl shadow-[#1e2d3d]/20">
             <svg class="group-hover:translate-y-1 transition-transform" xmlns="http://www.w3.org/2000/svg" width="22"
@@ -53,30 +59,36 @@
         </div>
       </div>
 
+      <!-- ส่วนรูปภาพ Hero พร้อม animation ลอย -->
       <div class="order-1 md:order-2 animate-float">
         <div class="relative w-64 h-64 md:w-96 md:h-96 group" (touchstart)="onHeroTouchStart($event)"
           (touchend)="onHeroTouchEnd($event)">
-
+          <!-- กล่องพื้นหลังเอียง ใช้ตกแต่งรูปให้ดูมีมิติ -->
           <div
             class="absolute inset-0 bg-gradient-to-tr from-[#50728c] to-[#9bb4c4] rounded-[3.5rem] rotate-6 opacity-20">
           </div>
-
+          <!-- กล่องรูปหลัก ครอบรูปทั้งหมด มี border และ shadow -->
           <div class="absolute inset-0 bg-white rounded-[3.5rem] border border-[#9bb4c4]/20 overflow-hidden shadow-2xl">
 
+            <!-- วนลูปรูป Hero ตาม index -->
+            <!-- ใช้ class เพื่อควบคุมสถานะ รูปที่แสดง / กำลังออก / ซ่อน -->
             <div *ngFor="let img of heroImages; let i = index" class="absolute inset-0 w-full h-full"
-              [class.hero-img-active]="currentHeroIndex() === i" [class.hero-img-leaving]="previousHeroIndex() === i"
+              [class.hero-img-leaving]="i === previousHeroIndex() && heroDirection === 'next'"
+              [class.hero-img-leaving-right]="i === previousHeroIndex() && heroDirection === 'prev'"
               [class.hero-img-hidden]="currentHeroIndex() !== i && previousHeroIndex() !== i">
               <img [src]="img" class="w-full h-full object-cover">
             </div>
 
             <div
               class="absolute inset-x-0 top-1/2 -translate-y-1/2 px-4 hidden md:flex justify-between z-30 opacity-0 group-hover:opacity-100 transition-opacity">
+              <!-- ปุ่มเลื่อนรูปย้อนกลับ (Desktop เท่านั้น) -->
               <button (click)="prevHero()"
                 class="w-12 h-12 rounded-full bg-white/90 backdrop-blur shadow-lg flex items-center justify-center text-[#1e2d3d] hover:bg-[#1e2d3d] hover:text-white transition-all">
                 <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="3">
                   <path d="m15 18-6-6 6-6" />
                 </svg>
               </button>
+              <!-- ปุ่มเลื่อนรูปถัดไป (Desktop เท่านั้น) -->
               <button (click)="nextHero()"
                 class="w-12 h-12 rounded-full bg-white/90 backdrop-blur shadow-lg flex items-center justify-center text-[#1e2d3d] hover:bg-[#1e2d3d] hover:text-white transition-all">
                 <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="3">
@@ -85,6 +97,7 @@
               </button>
             </div>
 
+            <!-- จุด indicator แสดงตำแหน่งรูปปัจจุบัน และกดเพื่อเปลี่ยนรูป -->
             <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-30">
               <div *ngFor="let img of heroImages; let i = index" (click)="currentHeroIndex.set(i)"
                 class="h-1.5 rounded-full transition-all cursor-pointer"
@@ -93,6 +106,7 @@
             </div>
           </div>
 
+          <!-- ข้อความแนะนำ Swipe สำหรับผู้ใช้มือถือ -->
           <div class="absolute -bottom-10 left-0 right-0 text-center md:hidden">
             <span class="text-[10px] font-black text-[#50728c]/40 uppercase tracking-[0.3em] animate-pulse">Swipe to
               slide</span>
@@ -102,12 +116,12 @@
 
     </section>
 
-    <!-- ===== Selected Projects Section ===== -->
-    <!-- แสดงผลงานโปรเจกต์ -->
+    <!-- Section แสดงผลงานโปรเจกต์ที่เลือกมา -->
     <section id="projects" class="mb-32 relative">
       <!-- Header + ปุ่มเลื่อน -->
       <div class="flex items-end justify-between mb-12 px-2">
         <div>
+          <!-- ชื่อหัวข้อ Selected Projects -->
           <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-[#1e2d3d]">Selected Projects</h2>
           <p class="text-[#50728c] text-sm mt-2 hidden md:block">เลื่อนเพื่อดูผลงานทั้งหมด</p>
         </div>
@@ -120,6 +134,7 @@
               <path d="m15 18-6-6 6-6" />
             </svg>
           </button>
+          <!-- ปุ่มเลื่อนโปรเจกต์ไปทางขวา (Desktop) -->
           <button (click)="scrollProjects(1)"
             class="w-12 h-12 rounded-2xl border border-[#9bb4c4]/20 flex items-center justify-center hover:bg-[#1e2d3d] hover:text-white transition-all shadow-sm">
             <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -129,15 +144,16 @@
         </div>
       </div>
 
-      <!-- Container สำหรับ Card โปรเจกต์ -->
+      <!-- Container สำหรับการ์ดโปรเจกต์ เลื่อนแนวนอนแบบ snap -->
       <div id="projectContainer"
         class="flex overflow-x-auto gap-8 pb-10 snap-x snap-mandatory hide-scrollbar scroll-smooth">
-
+        <!-- การ์ดโปรเจกต์แต่ละชิ้น กดเพื่อเปิด modal -->
         <div *ngFor="let project of projects; let i = index" (click)="openProject(project)"
           [style.animation-delay]="i * 100 + 'ms'"
           class="animate-slide-up shrink-0 w-[85vw] md:w-[400px] snap-center group relative bg-white rounded-[2.5rem] border border-[#9bb4c4]/10 shadow-xl shadow-[#1e2d3d]/5 hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 cursor-pointer overflow-hidden">
 
           <div class="aspect-[4/3] overflow-hidden bg-slate-50 relative">
+            <!-- รูปตัวอย่างของโปรเจกต์ -->
             <img [src]="project.images[0]"
               class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700">
             <div
@@ -146,7 +162,7 @@
             </div>
           </div>
 
-          <!-- รายละเอียดโปรเจกต์ -->
+          <!-- ส่วนรายละเอียดโปรเจกต์ (ชื่อ ปี คำอธิบาย และ tag) -->
           <div class="p-8">
             <div class="flex items-center justify-between mb-4">
               <span
@@ -168,8 +184,7 @@
       </div>
     </section>
 
-    <!-- ===== Certificates Section ===== -->
-    <!-- แสดงเกียรติบัตร -->
+    <!-- Section แสดงเกียรติบัตรและใบรับรอง -->
     <section id="certificates" class="mb-32 relative">
       <div class="flex items-end justify-between mb-12 px-2">
         <div>
@@ -194,9 +209,11 @@
 
       <div id="certContainer"
         class="flex overflow-x-auto gap-8 pb-10 snap-x snap-mandatory hide-scrollbar scroll-smooth">
+        <!-- การ์ดเกียรติบัตรแต่ละใบ -->
         <div *ngFor="let cert of certificates"
           class="shrink-0 w-[300px] md:w-[400px] snap-center bg-white rounded-[2.5rem] border border-[#9bb4c4]/10 shadow-lg hover:shadow-xl transition-all overflow-hidden flex flex-col group">
           <div class="relative aspect-video overflow-hidden">
+            <!-- รูปเกียรติบัตร -->
             <img [src]="cert.image"
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
             <div
@@ -204,6 +221,7 @@
               {{ cert.date }}</div>
           </div>
           <div class="p-8">
+            <!-- ชื่อผู้ออกเกียรติบัตร -->
             <span
               class="px-3 py-1 bg-[#1e2d3d] text-white rounded-md text-[9px] font-black uppercase tracking-wider mb-4 inline-block">{{
               cert.issuer }}</span>
@@ -215,13 +233,12 @@
       </div>
     </section>
 
-    <!-- ===== Interests / Hobbies Section ===== -->
-    <!-- ความสนใจส่วนตัว -->
+    <!-- Section แสดงความสนใจและงานอดิเรก -->
     <section id="hobbies" class="mb-32">
       <h2 class="text-3xl md:text-5xl font-bold tracking-tight text-[#1e2d3d] mb-12">Interests</h2>
 
       <div class="flex flex-wrap gap-3">
-
+        <!-- กล่องแสดง hobby แต่ละรายการ พร้อม icon -->
         <div
           class="group flex items-center gap-2 px-5 py-2.5 rounded-full bg-white border border-[#9bb4c4]/20 shadow-sm hover:border-[#1e2d3d] transition-all duration-300 cursor-default">
           <iconify-icon icon="ph:barbell-bold" width="20"
@@ -268,14 +285,15 @@
     </section>
   </main>
 
-  <!-- ===== Modal แสดงรายละเอียดโปรเจกต์ ===== -->
-  <!-- เปิดเมื่อ selectedProject มีค่า -->
+  <!-- Modal แสดงรายละเอียดโปรเจกต์แบบเต็มจอ -->
   <div *ngIf="selectedProject"
     class="fixed inset-0 z-[1000] flex items-center justify-center p-0 md:p-6 animate-fade-in">
+    <!-- Backdrop ฉากหลังสีเข้ม กดเพื่อปิด modal -->
     <div class="absolute inset-0 bg-[#1e2d3d]/80 backdrop-blur-md" (click)="closeProject()"></div>
 
     <div
       class="relative bg-white w-full max-w-6xl h-full md:h-[85vh] rounded-t-[3rem] md:rounded-[3rem] shadow-2xl overflow-hidden flex flex-col animate-slide-up">
+      <!-- ปุ่มปิด modal -->
       <button (click)="closeProject()"
         class="absolute top-6 right-6 z-[1020] w-12 h-12 bg-white/20 backdrop-blur-xl border border-white/30 flex items-center justify-center rounded-full hover:bg-white/40 transition-all">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3">
@@ -288,6 +306,7 @@
         <div
           class="w-full md:w-[60%] h-[40vh] md:h-full bg-slate-900 flex items-center justify-center relative group shrink-0">
 
+          <!-- แสดงรูปหรือวิดีโอของโปรเจกต์ใน modal -->
           <img *ngIf="selectedProject.currentImgIndex === 0" [src]="selectedProject.images[0]"
             class="max-w-full max-h-full object-contain animate-fade-in p-4">
 
@@ -328,6 +347,8 @@
             </div>
           </div>
         </div>
+
+        <!-- ส่วนรายละเอียดเชิงลึกของโปรเจกต์ -->
         <div class="flex-1 overflow-y-auto p-8 md:p-16 bg-white custom-scrollbar">
           <div class="flex items-center gap-4 mb-8">
             <span
@@ -360,11 +381,11 @@
     </div>
   </div>
 
-  <!-- ===== Footer ===== -->
-  <!-- ข้อมูลติดต่อ -->
+  <!-- Footer แสดงข้อมูลติดต่อ -->
   <footer class="py-12 border-t border-[#9bb4c4]/10 text-center bg-white/20 backdrop-blur-sm">
     <div class="max-w-5xl mx-auto px-6 flex flex-col items-center">
       <div class="flex flex-wrap justify-center gap-8 mb-8">
+        <!-- ปุ่มคัดลอก email ไปยัง clipboard -->
         <button (click)="copyEmail()"
           class="flex items-center gap-2 text-xs font-bold text-[#50728c] hover:text-[#1e2d3d] transition-all lowercase tracking-widest relative group">
           <iconify-icon icon="ph:envelope-simple-bold" width="18"></iconify-icon>
@@ -375,6 +396,7 @@
             class="absolute -top-1 -right-2 w-2 h-2 bg-green-500 rounded-full animate-ping"></span>
         </button>
 
+        <!-- ลิงก์ GitHub -->
         <a href="https://github.com/TorlapSayHi" target="_blank"
           class="flex items-center gap-2 text-xs font-bold text-[#50728c] hover:text-[#1e2d3d] transition-all tracking-widest group">
           <iconify-icon icon="ph:github-logo-bold" width="18"
@@ -382,12 +404,15 @@
           TorlapSayHi
         </a>
 
+        <!-- ลิงก์โทรศัพท์ -->
         <a href="tel:+66929063674"
           class="flex items-center gap-2 text-xs font-bold text-[#50728c] hover:text-[#1e2d3d] transition-all tracking-widest group">
           <iconify-icon icon="ph:phone-bold" width="18"
             class="group-hover:scale-110 transition-transform"></iconify-icon>
           +66 92-906-3674
         </a>
+
+        <!-- ลิงก์ Line -->
         <a href="https://line.me/ti/p/~jengeiei2272" target="_blank"
           class="flex items-center gap-2 text-xs font-bold text-[#50728c] hover:text-[#1e2d3d] transition-all tracking-widest group">
           <iconify-icon icon="ri:line-fill" width="18"
@@ -402,8 +427,7 @@
     </div>
   </footer>
 
-  <!-- ===== Scroll to Top Button ===== -->
-  <!-- ปุ่มเลื่อนกลับขึ้นด้านบน -->
+  <!-- ปุ่มเลื่อนกลับไปด้านบนของหน้าเว็บ -->
   <button *ngIf="isShowScrollButton" (click)="scrollToTop()"
     class="fixed bottom-10 right-10 z-[100] w-14 h-14 bg-[#1e2d3d] text-white rounded-[1.25rem] shadow-2xl flex items-center justify-center hover:bg-[#50728c] hover:-translate-y-2 transition-all duration-300">
     <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="3">
