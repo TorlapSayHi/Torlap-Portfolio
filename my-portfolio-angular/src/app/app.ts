@@ -135,6 +135,7 @@ export class App {
       ],
       images: [
         'assets/images/Torlap888/Logo-Torlap888.png',
+        'assets/images/Torlap888/diagram-oop.png',
         'assets/images/Torlap888/welcome.jpg',
         'assets/images/Torlap888/quit.jpg',
         'assets/images/Torlap888/info.jpg',
@@ -149,6 +150,29 @@ export class App {
         'assets/images/Torlap888/4thGame-1.jpg',
         'assets/images/Torlap888/4thGame-2.jpg',
         'assets/images/Torlap888/4thGame-3.jpg',
+      ],
+      currentImgIndex: 0
+    },
+    {
+      title: 'Product Management System (PMS)',
+      company: '',
+      year: '2025',
+      color: 'bg-orange-50 text-orange-600',
+      hover: 'hover:text-orange-600',
+      description: 'ระบบบริหารจัดการสินค้า พัฒนาด้วย Laravel ใช้สำหรับเพิ่ม แก้ไข ลบ และแสดงข้อมูลสินค้า พร้อมรองรับการจัดการรูปภาพผ่านเว็บอย่างสะดวกและเป็นระบบ',
+      tags: ['Laravel', 'PHP', 'MySQL'],
+      details: `ระบบนี้เป็นระบบบริหารจัดการสินค้า (Product Management System) พัฒนาด้วย Laravel Framework ใช้สำหรับเพิ่ม แก้ไข ลบ และแสดงข้อมูลสินค้าอย่างเป็นระบบ ผู้ดูแลสามารถจัดการข้อมูลสินค้าได้ผ่านหน้าเว็บที่ใช้งานง่าย รองรับการอัปโหลดและแสดงรูปภาพสินค้าแบบเรียลไทม์ ระบบถูกออกแบบให้ทำงานบนเว็บเซิร์ฟเวอร์ รองรับการใช้งานทั้งในองค์กรและบนอินเทอร์เน็ต ช่วยลดขั้นตอนการจัดการข้อมูลและเพิ่มความสะดวกในการดูแลสินค้า ที่พัฒนาเพื่อให้เว็บไซต์ Power Magnet Engineering **ได้รับการอนุญาติให้เผยแพร่ข้อมูลเกี่ยวกับบริษัทเรียบร้อย**`,
+      video: [
+        'assets/videos/pme-works-demo.mp4',
+      ],
+      images: [
+        'assets/images/pms/LogoPME.png',
+        'assets/images/pms/pms-1.png',
+        'assets/images/pms/pms-2.png',
+        'assets/images/pms/pms-3.png',
+        'assets/images/pms/pms-4.png',
+        'assets/images/pms/pms-5.png',
+        'assets/images/pms/pms-6.png',
       ],
       currentImgIndex: 0
     }
