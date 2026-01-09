@@ -43,13 +43,13 @@ export class App {
       details: 'เครื่องมือแปลภาษาบนหน้าจอที่ผสานพลังจาก Google Cloud Vision และ Translation API เพื่อแปลข้อความที่คัดลอกไม่ได้แบบเรียลไทม์ มาพร้อมระบบ Floating Window ที่ปรับแต่งได้อิสระและสั่งงานผ่าน Hotkey ช่วยลดกำแพงภาษาในการใช้งานคอมพิวเตอร์ได้อย่างมีประสิทธิภาพ จัดการความปลอดภัยของระบบด้วย Google Cloud CLI',
       video: ['assets/videos/Torslate-video-demo.mp4'],
       images: [
-        'assets/images/Torslate-1.png',
-        'assets/images/Torslate-2.png',
-        'assets/images/Torslate-3.png',
-        'assets/images/Torslate-4.png',
-        'assets/images/Torslate-5.png',
-        'assets/images/Torslate-6.png',
-        'assets/images/Torslate-7.png',
+        'assets/images/Torslate/Torslate-1.png',
+        'assets/images/Torslate/Torslate-2.png',
+        'assets/images/Torslate/Torslate-3.png',
+        'assets/images/Torslate/Torslate-4.png',
+        'assets/images/Torslate/Torslate-5.png',
+        'assets/images/Torslate/Torslate-6.png',
+        'assets/images/Torslate/Torslate-7.png',
       ],
       currentImgIndex: 0
     },
@@ -67,11 +67,11 @@ export class App {
         'assets/videos/Cultura-video-demo-2.mp4'
       ],
       images: [
-        'assets/images/Cultura-1.png',
-        'assets/images/Cultura-2.png',
-        'assets/images/Cultura-3.png',
-        'assets/images/Cultura-4.png',
-        'assets/images/Cultura-5.png',
+        'assets/images/Cultura/Cultura-1.png',
+        'assets/images/Cultura/Cultura-2.png',
+        'assets/images/Cultura/Cultura-3.png',
+        'assets/images/Cultura/Cultura-4.png',
+        'assets/images/Cultura/Cultura-5.png',
       ],
       currentImgIndex: 0
     },
@@ -86,15 +86,15 @@ export class App {
       details: 'แอปพลิเคชัน Full-Stack สำหรับวิเคราะห์พิกัดเชิงธุรกิจที่ช่วยในการตัดสินใจขยายสาขาของ MyOrder โดยใช้ Google Maps API เพื่อแสดงผลยอดขายและตำแหน่ง GPS ลงบนแผนที่แบบ Interactive ระบบช่วยให้นักวิเคราะห์มองเห็นภาพรวมของพื้นที่ที่มีศักยภาพได้อย่างชัดเจน พัฒนาด้วย Laravel และ MySQL พร้อมระบบ Google Sign-In เพื่อความสะดวกและปลอดภัย',
       video: ['assets/videos/My-Location-video-demo.mp4'],
       images: [
-        'assets/images/My-Location-1.png',
-        'assets/images/My-Location-2.png',
-        'assets/images/My-Location-3.png',
-        'assets/images/My-Location-4.png',
-        'assets/images/My-Location-5.png',
-        'assets/images/My-Location-6.png',
-        'assets/images/My-Location-7.png',
-        'assets/images/My-Location-8.png',
-        'assets/images/My-Location-9.png',
+        'assets/images/My-Location/My-Location-1.png',
+        'assets/images/My-Location/My-Location-2.png',
+        'assets/images/My-Location/My-Location-3.png',
+        'assets/images/My-Location/My-Location-4.png',
+        'assets/images/My-Location/My-Location-5.png',
+        'assets/images/My-Location/My-Location-6.png',
+        'assets/images/My-Location/My-Location-7.png',
+        'assets/images/My-Location/My-Location-8.png',
+        'assets/images/My-Location/My-Location-9.png',
       ],
       currentImgIndex: 0
     },
@@ -110,6 +110,45 @@ export class App {
       images: [
         'assets/images/torlap-cv.png',
         'assets/images/torlap-cv-mobile.png',
+      ],
+      currentImgIndex: 0
+    },
+    {
+      title: 'Torlap888',
+      company: '',
+      year: '2024',
+      color: 'bg-orange-50 text-orange-600',
+      hover: 'hover:text-orange-600',
+      description: 'โปรเจคในรายวิชา OOP ตอนปี 1 มีมินิเกม 4 เกมให้เล่น',
+      tags: ['Java', 'OOP'],
+      details: `โปรเจกต์นี้เป็นการจำลอง "ระบบคาสิโน/อาร์เคดจำลอง" บนหน้าจอ Console ที่เขียนด้วยภาษา Java (OOP) โดยผู้เล่นจะได้รับบทเป็นคนที่มีบัญชีธนาคาร (Bank) ต้องบริหารจัดการเงินเพื่อนำไปเล่นเกมต่างๆ และทำกำไรจากการชนะเกม
+      โปรเจกต์นี้ประกอบไปด้วย 4 มินิเกม ดังนี้:
+       1.Random Number (เกมลอตเตอรี่),
+       2.Guess the Hint (ทายคำศัพท์จากคำใบ้),
+       3.Remember Number (เกมจำตัวเลข),
+       4.Guess Number 0-100 (เกมทายเลขปริศนา)`,
+      video: [
+        'assets/videos/1randomNumber.mp4',
+        'assets/videos/2rememberNumber.mp4',
+        'assets/videos/3guessTheHint.mp4',
+        'assets/videos/4guessTheNumber.mp4',
+      ],
+      images: [
+        'assets/images/Torlap888/Logo-Torlap888.png',
+        'assets/images/Torlap888/welcome.jpg',
+        'assets/images/Torlap888/quit.jpg',
+        'assets/images/Torlap888/info.jpg',
+        'assets/images/Torlap888/1stGame-1.jpg',
+        'assets/images/Torlap888/1stGame-2.jpg',
+        'assets/images/Torlap888/2ndGame-1.jpg',
+        'assets/images/Torlap888/2ndGame-2.png',
+        'assets/images/Torlap888/3rdGame-1.jpg',
+        'assets/images/Torlap888/3rdGame-2.jpg',
+        'assets/images/Torlap888/3rdGame-3.jpg',
+        'assets/images/Torlap888/3rdGame-4.jpg',
+        'assets/images/Torlap888/4thGame-1.jpg',
+        'assets/images/Torlap888/4thGame-2.jpg',
+        'assets/images/Torlap888/4thGame-3.jpg',
       ],
       currentImgIndex: 0
     }
@@ -209,12 +248,12 @@ export class App {
 
   // เก็บ path รูปสำหรับ Hero Image Slider
   heroImages: string[] = [
-    'assets/images/torlap-img-5.jpg',
-    'assets/images/getstudentimage.jpg',
-    'assets/images/torlap-img-1.jpg',
-    'assets/images/torlap-img-2.jpg',
-    'assets/images/torlap-img-3.jpg',
-    'assets/images/torlap-img-4.jpg',
+    'assets/images/torlap-img/torlap-img-5.jpg',
+    'assets/images/torlap-img/getstudentimage.jpg',
+    'assets/images/torlap-img/torlap-img-1.jpg',
+    'assets/images/torlap-img/torlap-img-2.jpg',
+    'assets/images/torlap-img/torlap-img-3.jpg',
+    'assets/images/torlap-img/torlap-img-4.jpg',
   ];
   // ใช้เก็บ index รูป Hero ปัจจุบัน (Reactive)
   currentHeroIndex = signal(0);
